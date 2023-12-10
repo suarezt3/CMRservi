@@ -18,6 +18,6 @@ export const appConfig: ApplicationConfig = {
     provideNzIcons(),
     provideNzI18n(es_ES),
     importProvidersFrom(FormsModule, HttpClientModule),
-    provideAnimations()
+    provideAnimations(),
   ]
 };

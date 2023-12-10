@@ -1,1 +1,32 @@
-<p>tabla-clientes works!</p>
+<nz-table #nzTable [nzData]="datosClientes" nzTableLayout="fixed">
+  <thead>
+    <tr>
+      <th nzCustomFilter>
+        Nombre
+        <nz-filter-trigger [(nzVisible)]="visible" [nzActive]="searchValue.length > 0" [nzDropdownMenu]="menu">
+          <span nz-icon nzType="search"></span>
+        </nz-filter-trigger>
+      </th>
+      <th>Placa</th>
+      <th>Documento</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (data of datosClientes; track $index) {
+      <tr>
+        <td>{{ data?.name }}</td>
+        <td>{{ data?.plate }}</td>
+        <td>{{ data?.numberDocument }}</td>
+      </tr>
+    }
+  </tbody>
+</nz-table>
+<nz-dropdown-menu #menu="nzDropdownMenu">
+  <div class="ant-table-filter-dropdown">
+    <div class="search-box">
+      <input type="text" nz-input placeholder="Search name" [(ngModel)]="searchValue" />
+      <button nz-button nzSize="small" nzType="primary" (click)="search()" class="search-button">Buscar</button>
+      <button nz-button nzSize="small" (click)="reset()">Borrar</button>
+    </div>
+  </div>
+</nz-dropdown-menu>
