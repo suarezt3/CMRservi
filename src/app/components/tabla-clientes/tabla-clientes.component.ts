@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, signal } from '@angular/core';
 import { DatosClientesService } from '../../services/datos-clientes.service';
 
 @Component({
@@ -10,15 +10,18 @@ import { DatosClientesService } from '../../services/datos-clientes.service';
 })
 export class TablaClientesComponent implements OnInit {
 
+
+  private datosClientes = signal([])
   private DatosClientesService = inject( DatosClientesService )
+
 
   constructor( ) {}
 
 
   ngOnInit() {
     this.DatosClientesService.getClientes().subscribe((resp: any) => {
-      console.log("DATOS", resp);
-
+      this.datosClientes = resp
+      console.log("DATOS", this.datosClientes);
     });
   }
 
