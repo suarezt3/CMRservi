@@ -4,8 +4,8 @@ import { CommonModule } from '@angular/common';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzIconModule } from 'ng-zorro-antd/icon';
-
-
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzInputModule } from 'ng-zorro-antd/input';
 
 
 @NgModule({
@@ -14,12 +14,16 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
     CommonModule,
     NzTableModule,
     NzDropDownModule,
-    NzIconModule
+    NzIconModule,
+    NzButtonModule,
+    NzInputModule
   ],
   exports: [
     NzTableModule,
     NzDropDownModule,
-    NzIconModule
+    NzIconModule,
+    NzButtonModule,
+    NzInputModule
   ]
 })
 export class NgZorroModule { }

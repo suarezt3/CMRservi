@@ -6,6 +6,7 @@
   width: 188px;
   margin-bottom: 8px;
   display: block;
+  text-transform: uppercase;
 }
 
 .search-box button {

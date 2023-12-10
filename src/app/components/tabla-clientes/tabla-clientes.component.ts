@@ -44,7 +44,7 @@ export class TablaClientesComponent implements OnInit {
 
   search(): void {
     this.visible = false;
-    this.datosClientes = this.datosClientes.filter((item: any) => item.name.indexOf(this.searchValue) !== -1);
+    this.datosClientes = this.datosClientes.filter((item: any) => item.name.indexOf(this.searchValue.toUpperCase()) !== -1);
   }
 
 
