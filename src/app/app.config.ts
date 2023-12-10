@@ -17,8 +17,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideNzIcons(),
     provideNzI18n(es_ES),
-    importProvidersFrom(FormsModule),
-    importProvidersFrom(HttpClientModule),
+    importProvidersFrom(FormsModule, HttpClientModule),
     provideAnimations()
   ]
 };
