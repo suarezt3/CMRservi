@@ -1,4 +1,10 @@
-<nz-table #nzTable [nzData]="datosClientes" nzTableLayout="fixed">
+<nz-table
+#nzTable
+[nzData]="datosClientes"
+nzTableLayout="fixed"
+[nzScroll]="{ y: '700px' }"
+
+>
   <thead>
     <tr>
       <th nzCustomFilter>
