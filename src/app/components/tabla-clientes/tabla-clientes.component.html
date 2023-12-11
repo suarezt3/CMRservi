@@ -3,7 +3,8 @@
 [nzData]="datosClientes"
 nzTableLayout="fixed"
 [nzScroll]="{ y: '700px' }"
-
+[nzShowPagination]="true"
+[nzFrontPagination]="false"
 >
   <thead>
     <tr>
@@ -36,3 +37,6 @@ nzTableLayout="fixed"
     </div>
   </div>
 </nz-dropdown-menu>
+
+
+<!-- <nz-pagination [nzPageIndex]="3" [nzTotal]="500" nzShowSizeChanger [nzPageSize]="10"></nz-pagination> -->

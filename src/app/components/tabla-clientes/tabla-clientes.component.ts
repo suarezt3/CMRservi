@@ -13,8 +13,8 @@ import { FormsModule } from '@angular/forms';
 })
 export class TablaClientesComponent implements OnInit {
 
-  searchValue = '';
-  visible = false;
+  public searchValue = '';
+  public visible = false;
 
 
 
