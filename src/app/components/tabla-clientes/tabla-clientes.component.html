@@ -4,7 +4,8 @@
 nzTableLayout="fixed"
 [nzScroll]="{ y: '700px' }"
 [nzShowPagination]="true"
-[nzFrontPagination]="false"
+[nzFrontPagination]="true"
+(nzPageIndexChange)="onPageIndexChange($event)"
 >
   <thead>
     <tr>
@@ -37,6 +38,5 @@ nzTableLayout="fixed"
     </div>
   </div>
 </nz-dropdown-menu>
-
 
 <!-- <nz-pagination [nzPageIndex]="3" [nzTotal]="500" nzShowSizeChanger [nzPageSize]="10"></nz-pagination> -->

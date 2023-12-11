@@ -33,6 +33,11 @@ export class TablaClientesComponent implements OnInit {
   }
 
 
+  onPageIndexChange($event: any) {
+    console.log("EVENTO", $event);
+    }
+
+
   reset(): void {
     this.searchValue = '';
     this.search();
