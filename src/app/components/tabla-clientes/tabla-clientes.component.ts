@@ -28,13 +28,14 @@ export class TablaClientesComponent implements OnInit {
   ngOnInit() {
     this.DatosClientesService.getClientes().subscribe((resp: any) => {
       this.datosClientes = resp
-      console.log("DATOS", this.datosClientes);
+      console.log("DATOS", this.datosClientes, this.datosClientes.length);
     });
   }
 
 
-  onPageIndexChange($event: any) {
-    console.log("EVENTO", $event);
+  onPageIndexChange(event: any) {
+    console.log("EVENTO", event);
+    this.datosClientes = event
     }
 
 

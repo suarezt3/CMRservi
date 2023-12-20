@@ -1,11 +1,14 @@
 <nz-table
 #nzTable
 [nzData]="datosClientes"
+[nzTotal]="datosClientes.length"
 nzTableLayout="fixed"
-[nzScroll]="{ y: '700px' }"
+[nzScroll]="{ y: '500px' }"
 [nzShowPagination]="true"
 [nzFrontPagination]="true"
+[nzPageSize]="10"
 (nzPageIndexChange)="onPageIndexChange($event)"
+(nzCurrentPageDataChange)="onPageIndexChange($event)"
 >
   <thead>
     <tr>
@@ -39,4 +42,4 @@ nzTableLayout="fixed"
   </div>
 </nz-dropdown-menu>
 
-<!-- <nz-pagination [nzPageIndex]="3" [nzTotal]="500" nzShowSizeChanger [nzPageSize]="10"></nz-pagination> -->
+<!-- <nz-pagination [nzPageIndex]="3" [nzTotal]="datosClientes.length" nzShowSizeChanger [nzPageSize]="10"></nz-pagination> -->
