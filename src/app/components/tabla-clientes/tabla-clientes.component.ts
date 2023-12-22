@@ -1,4 +1,4 @@
-import { Component, OnInit, inject, signal } from '@angular/core';
+import { Component, OnInit, Signal, inject, signal } from '@angular/core';
 import { DatosClientesService } from '../../services/datos-clientes.service';
 import { NgZorroModule } from '../../ng-zorro/ng-zorro.module';
 import { FormsModule } from '@angular/forms';
@@ -15,6 +15,7 @@ export class TablaClientesComponent implements OnInit {
 
   public searchValue = '';
   public visible = false;
+  public paginaActual = signal(1)
 
 
 
@@ -33,9 +34,14 @@ export class TablaClientesComponent implements OnInit {
   }
 
 
-  onPageIndexChange(event: any) {
+  actualizarPagina(event: any) {
     console.log("EVENTO", event);
     this.datosClientes = event
+    }
+
+    cambioPagina(event: any){
+      console.log("Pagina Actual", event);
+      this.paginaActual = event
     }
 
 

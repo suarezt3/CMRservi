@@ -4,11 +4,12 @@
 [nzTotal]="datosClientes.length"
 nzTableLayout="fixed"
 [nzScroll]="{ y: '500px' }"
-[nzShowPagination]="true"
-[nzFrontPagination]="true"
+[nzShowPagination]="false"
+[nzFrontPagination]="false"
 [nzPageSize]="10"
-(nzPageIndexChange)="onPageIndexChange($event)"
-(nzCurrentPageDataChange)="onPageIndexChange($event)"
+[nzPageIndex]="paginaActual()"
+(nzPageIndexChange)="cambioPagina($event)"
+(nzCurrentPageDataChange)="actualizarPagina($event)"
 >
   <thead>
     <tr>
