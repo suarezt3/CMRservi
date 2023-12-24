@@ -4,6 +4,8 @@ import { NgZorroModule } from '../../ng-zorro/ng-zorro.module';
 import { FormsModule } from '@angular/forms';
 
 import { SearchComponent } from '../search-name/search-name.component';
+import { SearchPlacaComponent } from '../search-placa/search-placa.component';
+import { SearchVehiculoComponent } from '../search-vehiculo/search-vehiculo.component';
 
 
 @Component({
@@ -11,7 +13,13 @@ import { SearchComponent } from '../search-name/search-name.component';
   standalone: true,
   templateUrl: './tabla-clientes.component.html',
   styleUrl: './tabla-clientes.component.css',
-  imports: [ NgZorroModule, FormsModule, SearchComponent ],
+  imports: [
+    NgZorroModule,
+    FormsModule,
+    SearchComponent,
+    SearchPlacaComponent,
+    SearchVehiculoComponent
+  ],
 })
 export class TablaClientesComponent implements OnInit {
 

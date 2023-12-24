@@ -1,16 +1,16 @@
-import { Component, EventEmitter, Input, OnInit, Output, inject } from '@angular/core';
+import { Component, Input, Output, OnInit, EventEmitter, inject } from '@angular/core';
 import { NgZorroModule } from '../../ng-zorro/ng-zorro.module';
 import { FormsModule } from '@angular/forms';
 import { DatosClientesService } from '../../services/datos-clientes.service';
 
 @Component({
-  selector: 'app-search-name',
+  selector: 'app-search-placa',
   standalone: true,
   imports: [NgZorroModule, FormsModule],
-  templateUrl: './search-name.component.html',
-  styleUrl: './search-name.component.css'
+  templateUrl: './search-placa.component.html',
+  styleUrl: './search-placa.component.css'
 })
-export class SearchComponent implements OnInit {
+export class SearchPlacaComponent implements OnInit {
 
 
   public    searchValue = '';
@@ -20,11 +20,11 @@ export class SearchComponent implements OnInit {
 
   private DatosClientesService = inject( DatosClientesService )
 
-  constructor() {}
 
   ngOnInit(): void {
 
   }
+
 
   reset(): void {
     this.searchValue = '';
@@ -37,9 +37,8 @@ export class SearchComponent implements OnInit {
 
   search(): void {
     this.visible = false;
-    this.Data = this.Data.filter((item: any) => item.name.indexOf(this.searchValue.toUpperCase()) !== -1);
+    this.Data = this.Data.filter((item: any) => item.plate.indexOf(this.searchValue.toUpperCase()) !== -1);
     this.ResultadoBuscador.emit(this.Data)
   }
-
 
 }

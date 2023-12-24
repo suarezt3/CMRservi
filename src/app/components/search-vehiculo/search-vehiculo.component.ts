@@ -1,16 +1,16 @@
-import { Component, EventEmitter, Input, OnInit, Output, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
+import { DatosClientesService } from '../../services/datos-clientes.service';
 import { NgZorroModule } from '../../ng-zorro/ng-zorro.module';
 import { FormsModule } from '@angular/forms';
-import { DatosClientesService } from '../../services/datos-clientes.service';
 
 @Component({
-  selector: 'app-search-name',
+  selector: 'app-search-vehiculo',
   standalone: true,
-  imports: [NgZorroModule, FormsModule],
-  templateUrl: './search-name.component.html',
-  styleUrl: './search-name.component.css'
+  imports: [ NgZorroModule, FormsModule ],
+  templateUrl: './search-vehiculo.component.html',
+  styleUrl: './search-vehiculo.component.css'
 })
-export class SearchComponent implements OnInit {
+export class SearchVehiculoComponent {
 
 
   public    searchValue = '';
@@ -20,11 +20,11 @@ export class SearchComponent implements OnInit {
 
   private DatosClientesService = inject( DatosClientesService )
 
-  constructor() {}
 
   ngOnInit(): void {
 
   }
+
 
   reset(): void {
     this.searchValue = '';
@@ -37,9 +37,8 @@ export class SearchComponent implements OnInit {
 
   search(): void {
     this.visible = false;
-    this.Data = this.Data.filter((item: any) => item.name.indexOf(this.searchValue.toUpperCase()) !== -1);
+    this.Data = this.Data.filter((item: any) => item.vehicleBrand.indexOf(this.searchValue) !== -1);
     this.ResultadoBuscador.emit(this.Data)
   }
-
 
 }

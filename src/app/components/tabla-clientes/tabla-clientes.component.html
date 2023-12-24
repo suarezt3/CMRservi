@@ -1,11 +1,11 @@
-<h3>Total registros encontrados: {{datosClientes.length}}</h3>
+<h2>Total registros encontrados: <span class="total">{{datosClientes.length}}</span> </h2>
 <hr>
 <nz-table
 #nzTable
 [nzData]="datosClientes"
 [nzTotal]="datosClientes.length"
 nzTableLayout="fixed"
-[nzScroll]="{ y: '500px' }"
+[nzScroll]="{ y: '720px' }"
 [nzShowPagination]="false"
 [nzFrontPagination]="false"
 [nzPageSize]="10"
@@ -18,10 +18,14 @@ nzTableLayout="fixed"
       <th>Nombre
         <app-search-name [Data]="datosClientes" (ResultadoBuscador)="datosClientes = $event"></app-search-name>
       </th>
-      <th>Documento</th>
-      <th>Placa</th>
+      <th>N° documento</th>
+      <th>Placa
+        <app-search-placa [Data]="datosClientes" (ResultadoBuscador)="datosClientes = $event"></app-search-placa>
+      </th>
       <th>Modelo</th>
-      <th>Vehiculo</th>
+      <th>Vehiculo
+        <app-search-vehiculo  [Data]="datosClientes" (ResultadoBuscador)="datosClientes = $event"></app-search-vehiculo>
+      </th>
     </tr>
   </thead>
   <tbody>
