@@ -3,18 +3,18 @@ import { DatosClientesService } from '../../services/datos-clientes.service';
 import { NgZorroModule } from '../../ng-zorro/ng-zorro.module';
 import { FormsModule } from '@angular/forms';
 
+import { SearchComponent } from '../search-name/search-name.component';
+
 
 @Component({
   selector: 'app-tabla-clientes',
   standalone: true,
   templateUrl: './tabla-clientes.component.html',
   styleUrl: './tabla-clientes.component.css',
-  imports: [ NgZorroModule, FormsModule ],
+  imports: [ NgZorroModule, FormsModule, SearchComponent ],
 })
 export class TablaClientesComponent implements OnInit {
 
-  public searchValue = '';
-  public visible = false;
   public paginaActual = signal(1)
 
 
@@ -43,21 +43,5 @@ export class TablaClientesComponent implements OnInit {
       console.log("Pagina Actual", event);
       this.paginaActual = event
     }
-
-
-  reset(): void {
-    this.searchValue = '';
-    this.search();
-    this.DatosClientesService.getClientes().subscribe((resp: any) => {
-      this.datosClientes = resp
-      console.log("DATOS", this.datosClientes);
-    });
-  }
-
-  search(): void {
-    this.visible = false;
-    this.datosClientes = this.datosClientes.filter((item: any) => item.name.indexOf(this.searchValue.toUpperCase()) !== -1);
-  }
-
 
 }

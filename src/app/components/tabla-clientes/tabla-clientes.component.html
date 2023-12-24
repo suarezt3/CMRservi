@@ -1,3 +1,4 @@
+<h3>Total registros encontrados: {{datosClientes.length}}</h3>
 <nz-table
 #nzTable
 [nzData]="datosClientes"
@@ -13,34 +14,27 @@ nzTableLayout="fixed"
 >
   <thead>
     <tr>
-      <th nzCustomFilter>
-        Nombre
-        <nz-filter-trigger [(nzVisible)]="visible" [nzActive]="searchValue.length > 0" [nzDropdownMenu]="filtroNombre">
-          <span nz-icon nzType="search"></span>
-        </nz-filter-trigger>
+      <th>Nombre
+        <app-search-name [Data]="datosClientes" (ResultadoBuscador)="datosClientes = $event"></app-search-name>
       </th>
-      <th>Placa</th>
       <th>Documento</th>
+      <th>Placa</th>
+      <th>Modelo</th>
+      <th>Vehiculo</th>
     </tr>
   </thead>
   <tbody>
     @for (data of datosClientes; track $index) {
       <tr>
-        <td>{{ data?.name ? data?.name : 'No registra' }}</td>
-        <td>{{ data?.plate ? data?.plate : 'No registra'}}</td>
-        <td>{{ data?.numberDocument ? data?.numberDocument : 'No registra' }}</td>
+        <td>{{ data?.name ? data?.name : 'NO REGISTRA' }}</td>
+        <td>{{ data?.numberDocument ? data?.numberDocument : 'NO REGISTRA'}}</td>
+        <td>{{ data?.plate ? data?.plate : 'NO REGISTRA'}}</td>
+        <td>{{ data?.vehicle }}</td>
+        <td>{{ data?.vehicleBrand }}</td>
       </tr>
     }
   </tbody>
 </nz-table>
-<nz-dropdown-menu #filtroNombre="nzDropdownMenu">
-  <div class="ant-table-filter-dropdown">
-    <div class="search-box">
-      <input type="text" nz-input placeholder="Buscar nombre" [(ngModel)]="searchValue" />
-      <button nz-button nzSize="small" nzType="primary" (click)="search()" class="search-button">Buscar</button>
-      <button nz-button nzSize="small" (click)="reset()">Borrar</button>
-    </div>
-  </div>
-</nz-dropdown-menu>
+
 
 <!-- <nz-pagination [nzPageIndex]="3" [nzTotal]="datosClientes.length" nzShowSizeChanger [nzPageSize]="10"></nz-pagination> -->
