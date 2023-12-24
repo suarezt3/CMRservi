@@ -26,6 +26,7 @@ nzTableLayout="fixed"
       <th>Vehiculo
         <app-search-vehiculo  [Data]="datosClientes" (ResultadoBuscador)="datosClientes = $event"></app-search-vehiculo>
       </th>
+      <th>Acciones</th>
     </tr>
   </thead>
   <tbody>
@@ -36,6 +37,10 @@ nzTableLayout="fixed"
         <td>{{ data?.plate ? data?.plate : 'NO REGISTRA'}}</td>
         <td>{{ data?.vehicle }}</td>
         <td>{{ data?.vehicleBrand }}</td>
+        <td>
+        <button class="btn" nz-button nzType="primary" > Ver mas</button>
+        <button class="btn" nz-button nzType="default" > Agregar trabajo</button>
+        </td>
       </tr>
     }
   </tbody>
