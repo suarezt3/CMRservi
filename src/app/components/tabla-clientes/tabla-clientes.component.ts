@@ -8,6 +8,7 @@ import { SearchPlacaComponent } from '../search-placa/search-placa.component';
 import { SearchVehiculoComponent } from '../search-vehiculo/search-vehiculo.component';
 import { CLIENTE } from '../../interfaces/CLIENTE';
 import { RouterModule } from '@angular/router';
+import { DetallesClienteComponent } from '../../pages/detalles-cliente/detalles-cliente.component';
 
 
 @Component({
@@ -22,12 +23,13 @@ import { RouterModule } from '@angular/router';
     SearchComponent,
     SearchPlacaComponent,
     SearchVehiculoComponent,
+    DetallesClienteComponent
   ],
 })
 export class TablaClientesComponent implements OnInit {
 
 
-
+  public visible: boolean = false
   public datosClientes: CLIENTE[] = [] || undefined;
   private DatosClientesService = inject( DatosClientesService )
 
@@ -40,6 +42,15 @@ export class TablaClientesComponent implements OnInit {
       this.datosClientes = resp
       console.log("DATOS", this.datosClientes, this.datosClientes.length);
     });
+  }
+
+
+  open(): void {
+    this.visible = true;
+  }
+
+  close(): void {
+    this.visible = false;
   }
 
 

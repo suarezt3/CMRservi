@@ -7,6 +7,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzPaginationModule } from 'ng-zorro-antd/pagination';
+import {NzDrawerModule} from 'ng-zorro-antd/drawer';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { NzPaginationModule } from 'ng-zorro-antd/pagination';
     NzIconModule,
     NzButtonModule,
     NzInputModule,
-    NzPaginationModule
+    NzPaginationModule,
+    NzDrawerModule
   ],
   exports: [
     NzTableModule,
@@ -26,7 +28,8 @@ import { NzPaginationModule } from 'ng-zorro-antd/pagination';
     NzIconModule,
     NzButtonModule,
     NzInputModule,
-    NzPaginationModule
+    NzPaginationModule,
+    NzDrawerModule
   ]
 })
 export class NgZorroModule { }
