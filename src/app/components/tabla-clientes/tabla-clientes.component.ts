@@ -32,7 +32,7 @@ export class TablaClientesComponent implements OnInit {
   public visible: boolean = false
   public datosClientes: CLIENTE[] = [] || undefined;
   private DatosClientesService = inject( DatosClientesService )
-
+  public idPlaca: string = ""
 
   constructor( ) {}
 
@@ -40,13 +40,18 @@ export class TablaClientesComponent implements OnInit {
   ngOnInit() {
     this.DatosClientesService.getClientes().subscribe((resp: any) => {
       this.datosClientes = resp
-      console.log("DATOS", this.datosClientes, this.datosClientes.length);
     });
   }
 
 
-  open(): void {
+ open(placa: any) {
+    this.idPlaca = placa
     this.visible = true;
+    console.log(placa);
+    this.DatosClientesService.getClientPlate(placa).subscribe((resp: any) => {
+      console.log("DATOS", resp[0]);
+
+    });
   }
 
   close(): void {
