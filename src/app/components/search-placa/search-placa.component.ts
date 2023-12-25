@@ -2,6 +2,7 @@ import { Component, Input, Output, OnInit, EventEmitter, inject } from '@angular
 import { NgZorroModule } from '../../ng-zorro/ng-zorro.module';
 import { FormsModule } from '@angular/forms';
 import { DatosClientesService } from '../../services/datos-clientes.service';
+import { CLIENTE } from '../../interfaces/CLIENTE';
 
 @Component({
   selector: 'app-search-placa',
@@ -15,7 +16,7 @@ export class SearchPlacaComponent implements OnInit {
 
   public    searchValue = '';
   public    visible = false;
-  @Input()  Data: any;
+  @Input()  Data: CLIENTE[] = [] || undefined;
   @Output() ResultadoBuscador = new EventEmitter();
 
   private DatosClientesService = inject( DatosClientesService )

@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { SearchComponent } from '../search-name/search-name.component';
 import { SearchPlacaComponent } from '../search-placa/search-placa.component';
 import { SearchVehiculoComponent } from '../search-vehiculo/search-vehiculo.component';
+import { CLIENTE } from '../../interfaces/CLIENTE';
 
 
 @Component({
@@ -27,7 +28,7 @@ export class TablaClientesComponent implements OnInit {
 
 
 
-  public datosClientes: any[] = []
+  public datosClientes: CLIENTE[] = [] || undefined;
   private DatosClientesService = inject( DatosClientesService )
 
 
