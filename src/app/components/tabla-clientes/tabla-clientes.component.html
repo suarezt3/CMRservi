@@ -35,7 +35,7 @@ nzTableLayout="fixed"
         <td>{{ data?.vehicle }}</td>
         <td>{{ data?.vehicleBrand }}</td>
         <td>
-        <button [routerLink]="[data?.plate|| undefined]" class="btn" nz-button nzType="primary" > Ver mas</button>
+        <button [routerLink]="[data?.id || undefined]" class="btn" nz-button nzType="primary" > Ver mas</button>
         <button class="btn" nz-button nzType="default" > Agregar trabajo</button>
         </td>
       </tr>
