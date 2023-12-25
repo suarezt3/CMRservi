@@ -9,9 +9,6 @@ nzTableLayout="fixed"
 [nzShowPagination]="false"
 [nzFrontPagination]="false"
 [nzPageSize]="10"
-[nzPageIndex]="paginaActual()"
-(nzPageIndexChange)="cambioPagina($event)"
-(nzCurrentPageDataChange)="actualizarPagina($event)"
 >
   <thead>
     <tr>
@@ -38,7 +35,7 @@ nzTableLayout="fixed"
         <td>{{ data?.vehicle }}</td>
         <td>{{ data?.vehicleBrand }}</td>
         <td>
-        <button class="btn" nz-button nzType="primary" > Ver mas</button>
+        <button [routerLink]="[data?.plate|| undefined]" class="btn" nz-button nzType="primary" > Ver mas</button>
         <button class="btn" nz-button nzType="default" > Agregar trabajo</button>
         </td>
       </tr>

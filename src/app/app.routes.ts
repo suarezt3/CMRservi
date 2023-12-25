@@ -4,5 +4,5 @@ import { DetallesClienteComponent } from './pages/detalles-cliente/detalles-clie
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/clientes' },
   { path: 'clientes', loadChildren: () => import('./pages/welcome/welcome.routes').then(m => m.WELCOME_ROUTES) },
-  { path: 'id', component: DetallesClienteComponent }
+  { path: 'clientes/:id', component: DetallesClienteComponent }
 ];

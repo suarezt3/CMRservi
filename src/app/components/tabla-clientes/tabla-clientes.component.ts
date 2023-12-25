@@ -7,6 +7,7 @@ import { SearchComponent } from '../search-name/search-name.component';
 import { SearchPlacaComponent } from '../search-placa/search-placa.component';
 import { SearchVehiculoComponent } from '../search-vehiculo/search-vehiculo.component';
 import { CLIENTE } from '../../interfaces/CLIENTE';
+import { RouterModule } from '@angular/router';
 
 
 @Component({
@@ -17,14 +18,13 @@ import { CLIENTE } from '../../interfaces/CLIENTE';
   imports: [
     NgZorroModule,
     FormsModule,
+    RouterModule,
     SearchComponent,
     SearchPlacaComponent,
-    SearchVehiculoComponent
+    SearchVehiculoComponent,
   ],
 })
 export class TablaClientesComponent implements OnInit {
-
-  public paginaActual = signal(1)
 
 
 
@@ -42,15 +42,5 @@ export class TablaClientesComponent implements OnInit {
     });
   }
 
-
-  actualizarPagina(event: any) {
-    console.log("EVENTO", event);
-    this.datosClientes = event
-    }
-
-    cambioPagina(event: any){
-      console.log("Pagina Actual", event);
-      this.paginaActual = event
-    }
 
 }
