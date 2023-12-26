@@ -1,1 +1,15 @@
-<h3  >{{ cliente[0]?.name }}</h3>
+
+<div class="header">
+  <section class="container">
+    <div class="container-placa">
+      <div class=" placa texto-placa">{{cliente[0]?.plate | slice:0:3}}</div>
+      <div class="icono-placa"></div>
+      <div class=" placa numero-placa">{{cliente[0]?.plate | slice:3}}</div>
+    </div>
+    <p class="texto-colombia">COLOMBIA</p>
+  </section>
+<div>
+  <nz-avatar nzIcon="user" style="background-color:#1d82f5;"></nz-avatar>
+  <h3  >{{ cliente[0]?.name }}</h3>
+</div>
+</div>

@@ -1,0 +1,39 @@
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.container {
+  width: 150px;
+  height: 75px;
+  background-color: #fca103;
+  border-radius: 5px;
+  border: 2px solid #000000;
+  box-shadow: 0px 0px 0px 2px #fca103;
+}
+
+.container-placa {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.icono-placa {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #000000;
+}
+
+.placa {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.texto-colombia {
+  text-align: center;
+  margin-top: -10px;
+}
+
