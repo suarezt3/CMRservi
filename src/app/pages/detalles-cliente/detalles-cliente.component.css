@@ -1,7 +1,10 @@
 
 .header {
+  width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  padding-top: 20px;
+  margin-bottom: 20px;
 }
 
 .container {
@@ -11,6 +14,7 @@
   border-radius: 5px;
   border: 2px solid #000000;
   box-shadow: 0px 0px 0px 2px #fca103;
+  margin-right: 15px;
 }
 
 .container-placa {
@@ -18,6 +22,11 @@
   justify-content: space-evenly;
   align-items: center;
 }
+
+.container-info {
+  font-weight: bold;
+}
+
 
 .icono-placa {
   width: 7px;
@@ -37,3 +46,12 @@
   margin-top: -10px;
 }
 
+.container-brand {
+  display: flex;
+  justify-content: space-around;
+}
+
+h4 {
+  font-weight: bold;
+  padding-top: 10px;
+}
