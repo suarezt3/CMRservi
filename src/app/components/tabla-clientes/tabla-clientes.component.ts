@@ -6,7 +6,6 @@ import { FormsModule } from '@angular/forms';
 import { SearchComponent } from '../search-name/search-name.component';
 import { SearchPlacaComponent } from '../search-placa/search-placa.component';
 import { SearchVehiculoComponent } from '../search-vehiculo/search-vehiculo.component';
-import { CLIENTE } from '../../interfaces/CLIENTE';
 import { RouterModule } from '@angular/router';
 import { DetallesClienteComponent } from '../../pages/detalles-cliente/detalles-cliente.component';
 
@@ -30,9 +29,9 @@ export class TablaClientesComponent implements OnInit {
 
 
   public visible      : boolean   = false
-  public datosClientes: CLIENTE[] = [] || undefined;
-  public cliente      : CLIENTE[] = [] || undefined
-  public isLoading    : boolean   = false;
+  public datosClientes: any[] = [] || undefined;
+  public cliente      : any[] = [] || undefined
+
 
   private DatosClientesService = inject( DatosClientesService );
 
@@ -47,12 +46,11 @@ export class TablaClientesComponent implements OnInit {
 
 
  open(placa: any) {
-    this.isLoading = true;
-    setTimeout(() => {
-      this.DatosClientesService.getClientPlate(placa)
+      this.DatosClientesService.getClientPlate(placa).subscribe((resp: any) => {
+        this.cliente = resp
+        console.log("CLIENTE", this.cliente);
+      })
       this.visible = true;
-      this.isLoading = false;
-    }, 200);
   }
 
   close(): void {

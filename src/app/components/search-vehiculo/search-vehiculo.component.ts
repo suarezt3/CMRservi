@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { DatosClientesService } from '../../services/datos-clientes.service';
 import { NgZorroModule } from '../../ng-zorro/ng-zorro.module';
 import { FormsModule } from '@angular/forms';
-import { CLIENTE } from '../../interfaces/CLIENTE';
+
 
 @Component({
   selector: 'app-search-vehiculo',
@@ -16,7 +16,7 @@ export class SearchVehiculoComponent {
 
   public    searchValue = '';
   public    visible = false;
-  @Input()  Data: CLIENTE[] = [] || undefined;
+  @Input()  Data: any[] = [] || undefined;
   @Output() ResultadoBuscador = new EventEmitter();
 
   private DatosClientesService = inject( DatosClientesService )

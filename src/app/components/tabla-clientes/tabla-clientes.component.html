@@ -35,24 +35,26 @@ nzTableLayout="fixed"
         <td>{{ data?.vehicle }}</td>
         <td>{{ data?.vehicleBrand }}</td>
         <td>
-        <button [nzLoading]="isLoading" (click)="open(data?.plate)" class="btn" nz-button nzType="primary" > Ver mas</button>
+        <button (click)="open(data?.plate)" class="btn" nz-button nzType="primary" > Ver mas</button>
         <button class="btn" nz-button nzType="default" > Agregar trabajo</button>
         </td>
       </tr>
     }
   </tbody>
 </nz-table>
-<nz-drawer
-[nzClosable]="false"
-[nzVisible]="visible"
-nzPlacement="right"
-nzTitle="Datos del cliente"
-(nzOnClose)="close()"
->
-<ng-container *nzDrawerContent>
- <app-detalles-cliente></app-detalles-cliente>
-</ng-container>
-</nz-drawer>
+
+@if (cliente) {
+  <nz-drawer
+  [nzClosable]="false"
+  [nzVisible]="visible"
+  nzPlacement="right"
+  nzTitle="Datos del cliente"
+  (nzOnClose)="close()"
+  >
+ <ng-container *nzDrawerContent>
+        <app-detalles-cliente [cliente]="cliente" ></app-detalles-cliente>
+    </ng-container>
+  </nz-drawer>
+}
 
 
-<!-- <nz-pagination [nzPageIndex]="3" [nzTotal]="datosClientes.length" nzShowSizeChanger [nzPageSize]="10"></nz-pagination> -->

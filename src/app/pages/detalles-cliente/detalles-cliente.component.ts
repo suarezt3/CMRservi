@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, inject } from '@angular/core';
 
 import { DatosClientesService } from '../../services/datos-clientes.service';
-import { CLIENTE } from '../../interfaces/CLIENTE';
+
 
 @Component({
   selector: 'app-detalles-cliente',
@@ -12,18 +12,13 @@ import { CLIENTE } from '../../interfaces/CLIENTE';
 })
 export class DetallesClienteComponent implements OnInit {
 
-  @Input() cliente: CLIENTE[] = [] || undefined
+  @Input() cliente: any[] = [] || undefined
 
   private DatosClientesService = inject( DatosClientesService );
 
-  constructor() {this.DatosClientesService.datos}
+  constructor() {}
 
   ngOnInit() {
-
-    setTimeout(() => {
-      this.cliente = this.DatosClientesService.datos
-      console.log("cliente", this.cliente);
-    }, 200);
 
   }
 
