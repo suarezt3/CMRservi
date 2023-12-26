@@ -29,10 +29,12 @@ import { DetallesClienteComponent } from '../../pages/detalles-cliente/detalles-
 export class TablaClientesComponent implements OnInit {
 
 
-  public visible: boolean = false
+  public visible      : boolean   = false
   public datosClientes: CLIENTE[] = [] || undefined;
-  private DatosClientesService = inject( DatosClientesService )
-  public idPlaca: string = ""
+  public cliente      : CLIENTE[] = [] || undefined
+  public isLoading    : boolean   = false;
+
+  private DatosClientesService = inject( DatosClientesService );
 
   constructor( ) {}
 
@@ -45,13 +47,12 @@ export class TablaClientesComponent implements OnInit {
 
 
  open(placa: any) {
-    this.idPlaca = placa
-    this.visible = true;
-    console.log(placa);
-    this.DatosClientesService.getClientPlate(placa).subscribe((resp: any) => {
-      console.log("DATOS", resp[0]);
-
-    });
+    this.isLoading = true;
+    setTimeout(() => {
+      this.DatosClientesService.getClientPlate(placa)
+      this.visible = true;
+      this.isLoading = false;
+    }, 300);
   }
 
   close(): void {

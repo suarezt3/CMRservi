@@ -12,6 +12,8 @@ export class DatosClientesService {
   private http = inject( HttpClient )
   private url = environment.supabaseurl
 
+  public datos: CLIENTE[] = [] || undefined
+
   constructor() { }
 
 
@@ -34,13 +36,15 @@ export class DatosClientesService {
  * @param placa Para obtener datos de un cliente por medio de la placa
  * @returns
  */
-getClientPlate(placa: string): Observable<CLIENTE> {
+getClientPlate(placa: string) {
   let headers = new HttpHeaders({
     'apikey'       : environment.supabaseKey,
     'Authorization': environment.authorization,
   })
 
-   return this.http.get<CLIENTE>(`${this.url}/clients?plate=eq.${placa}`, {headers}).pipe()
+   return this.http.get(`${this.url}/clients?plate=eq.${placa}`, {headers}).subscribe((resp: any) => {
+    this.datos = resp[0]
+   })
 }
 
 }
