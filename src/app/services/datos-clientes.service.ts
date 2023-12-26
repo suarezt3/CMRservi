@@ -43,7 +43,7 @@ getClientPlate(placa: string) {
   })
 
    return this.http.get(`${this.url}/clients?plate=eq.${placa}`, {headers}).subscribe((resp: any) => {
-    this.datos = resp[0]
+    this.datos = resp
    })
 }
 

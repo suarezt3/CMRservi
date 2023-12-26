@@ -1,7 +1,7 @@
 export interface CLIENTE {
   id?:             string;
   created_at?:     Date;
-  name?:           string;
+  name?:           string | null;
   documentType?:   string;
   numberDocument?: string;
   email?:          string;

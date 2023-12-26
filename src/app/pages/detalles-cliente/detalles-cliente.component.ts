@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, inject } from '@angular/core';
-import { CLIENTE } from '../../interfaces/CLIENTE';
+import { CLIENTE } from '../../interfaces/cliente';
 import { DatosClientesService } from '../../services/datos-clientes.service';
 
 @Component({
@@ -22,7 +22,7 @@ export class DetallesClienteComponent implements OnInit {
     setTimeout(() => {
       this.cliente = this.DatosClientesService.datos
       console.log("cliente", this.cliente);
-    }, 300);
+    }, 200);
 
   }
 

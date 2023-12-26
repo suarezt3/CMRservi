@@ -52,7 +52,7 @@ export class TablaClientesComponent implements OnInit {
       this.DatosClientesService.getClientPlate(placa)
       this.visible = true;
       this.isLoading = false;
-    }, 300);
+    }, 200);
   }
 
   close(): void {
