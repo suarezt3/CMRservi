@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, inject } from '@angular/core';
-import { CLIENTE } from '../../interfaces/cliente';
+
 import { DatosClientesService } from '../../services/datos-clientes.service';
+import { CLIENTE } from '../../interfaces/CLIENTE';
 
 @Component({
   selector: 'app-detalles-cliente',
