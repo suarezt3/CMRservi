@@ -8,6 +8,7 @@ import { SearchPlacaComponent } from '../search-placa/search-placa.component';
 import { SearchVehiculoComponent } from '../search-vehiculo/search-vehiculo.component';
 import { RouterModule } from '@angular/router';
 import { DetallesClienteComponent } from '../../pages/detalles-cliente/detalles-cliente.component';
+import { HistorialTrabajosClienteComponent } from '../historial-trabajos-cliente/historial-trabajos-cliente.component';
 
 
 @Component({
@@ -22,7 +23,8 @@ import { DetallesClienteComponent } from '../../pages/detalles-cliente/detalles-
     SearchComponent,
     SearchPlacaComponent,
     SearchVehiculoComponent,
-    DetallesClienteComponent
+    DetallesClienteComponent,
+    HistorialTrabajosClienteComponent
   ],
 })
 export class TablaClientesComponent implements OnInit {

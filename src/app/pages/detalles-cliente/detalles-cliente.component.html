@@ -8,14 +8,14 @@
     <p class="texto-colombia">COLOMBIA</p>
   </section>
   <div class="container-info">
-    <h5>{{ cliente[0]?.name }}</h5>
-    <h5> {{ cliente[0]?.numberDocument ? cliente[0]?.numberDocument : 'No registra telefono' }} </h5>
+    <h4>{{ cliente[0]?.name }}</h4>
+    <h5> {{ cliente[0]?.phone ? cliente[0]?.phone : 'No registra telefono' }} </h5>
     <h5> {{ cliente[0]?.email ? cliente[0]?.email : 'No registra correo' }} </h5>
   </div>
 </div>
 <section class="container-brand">
   <div class="brands brand">
-    <h4>{{cliente[0]?.vehicleBrand}}</h4>
+    <h4>{{cliente[0]?.vehicleBrand | uppercase}}</h4>
   </div>
   <div class=" brands vehicle">
     <h4>
@@ -23,3 +23,4 @@
     </h4>
   </div>
 </section>
+<hr>

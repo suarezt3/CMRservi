@@ -45,6 +45,7 @@ nzTableLayout="fixed"
 
 @if (cliente) {
   <nz-drawer
+  [nzWidth]="450"
   [nzClosable]="false"
   [nzVisible]="visible"
   nzPlacement="right"
@@ -52,7 +53,8 @@ nzTableLayout="fixed"
   (nzOnClose)="close()"
   >
  <ng-container *nzDrawerContent>
-        <app-detalles-cliente [cliente]="cliente" ></app-detalles-cliente>
+        <app-detalles-cliente [cliente]="cliente"/>
+        <app-historial-trabajos-cliente/>
     </ng-container>
   </nz-drawer>
 }
