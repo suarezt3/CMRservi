@@ -1,15 +1,60 @@
-
 <h3>Historial de trabajos realizados</h3>
-  <nz-tabset>
-    @for (item of trabajosCliente; track item.id) {
-      <nz-tab [nzTitle]="item?.typeJobs">
-        <div class="dates">
-          <nz-tag [nzColor]="'geekblue'"> <span nz-icon nzType="calendar" nzTheme="outline"></span> {{item?.date}} <span nz-icon nzType="check-circle" nzTheme="outline"></span> </nz-tag>
-          <nz-tag [nzColor]="'volcano'"> <span nz-icon nzType="calendar" nzTheme="outline"></span> {{item?.nextDate}}</nz-tag>
-        </div>
+<nz-tabset>
+  @for (item of trabajosCliente; track item.id) {
+  <nz-tab [nzTitle]="item?.typeJobs">
+    <div class="dates">
+      <nz-tag
+      [nzColor]="'geekblue'"
+      >
+      <span
+      nz-icon nzType="calendar"
+      nzTheme="outline"
+      >
+    </span> {{item?.date}}
+        <span
+          nz-tooltip
+          nzTooltipTitle="Fecha del trabajo ralizado"
+          nzTooltipColor="geekblue"
+          nz-icon
+          nzType="check-circle"
+          nzTheme="outline"
+          >
+        </span>
+      </nz-tag>
 
-      </nz-tab>
-    }
-  </nz-tabset>
+      @if (item?.nextDate) {
+        <nz-tag
+        [nzColor]="'volcano'"
+        > <span
+        nz-icon nzType="calendar"
+        nzTheme="outline"
+        >
+      </span> {{item?.nextDate}}
+      <span
+            nz-tooltip
+            [nzTooltipTitle]="textDate + item?.typeJobs"
+            nzTooltipColor="volcano"
+            nz-icon
+            nzType="sync"
+            nzTheme="outline"
+            ></span>
+        </nz-tag>
+      }
+    </div>
 
+    <div>
+      <h4>Orden</h4>
+      <p>{{item?.numberOrder}}</p>
+    </div>
+    <div>
+      <h4>Costo</h4>
+      <p>{{item?.price}}</p>
+    </div>
+    <div>
+      <h4>Descripcion del trabajo realizado</h4>
+      <p>{{item?.description}}</p>
+    </div>
 
+  </nz-tab>
+  }
+</nz-tabset>

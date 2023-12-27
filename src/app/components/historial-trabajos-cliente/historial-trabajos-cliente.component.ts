@@ -11,7 +11,7 @@ import { NgZorroModule } from '../../ng-zorro/ng-zorro.module';
 export class HistorialTrabajosClienteComponent implements OnInit {
 
   @Input() trabajosCliente!: any;
-
+  public textDate: string = "Siguiente "
 
   ngOnInit(): void {
 
