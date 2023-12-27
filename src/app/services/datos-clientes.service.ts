@@ -30,7 +30,6 @@ export class DatosClientesService {
 }
 
 
-
 /**
  *
  * @param placa Para obtener datos de un cliente por medio de la placa
@@ -45,4 +44,22 @@ getClientPlate(placa: string) {
    return this.http.get(`${this.url}/clients?plate=eq.${placa}`, {headers}).pipe()
 }
 
+
+ /**
+ *
+ * @param id Para obtener datos de cada trabajo de un cliente
+ * @returns
+ */
+   getJobsClients(id: string) {
+    let headers = new HttpHeaders({
+      'apikey'       : environment.supabaseKey,
+      'Authorization': environment.authorization,
+    })
+
+     return this.http.get(`${this.url}/jobs?plate=eq.${id}`, {headers})
+  }
+
+
 }
+
+

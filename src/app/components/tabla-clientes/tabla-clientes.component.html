@@ -54,7 +54,7 @@ nzTableLayout="fixed"
   >
  <ng-container *nzDrawerContent>
         <app-detalles-cliente [cliente]="cliente"/>
-        <app-historial-trabajos-cliente/>
+        <app-historial-trabajos-cliente [trabajosCliente]="trabajos" />
     </ng-container>
   </nz-drawer>
 }

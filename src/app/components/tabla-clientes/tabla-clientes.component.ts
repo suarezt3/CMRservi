@@ -32,7 +32,8 @@ export class TablaClientesComponent implements OnInit {
 
   public visible      : boolean   = false
   public datosClientes: any[] = [] || undefined;
-  public cliente      : any[] = [] || undefined
+  public cliente      : any[] = [] || undefined;
+  public trabajos     : any[] = [] || undefined;
 
 
   private DatosClientesService = inject( DatosClientesService );
@@ -48,6 +49,10 @@ export class TablaClientesComponent implements OnInit {
 
 
  open(placa: any) {
+  this.DatosClientesService.getJobsClients(placa).subscribe((trabajo: any) => {
+    this.trabajos = trabajo
+    console.log("TRABAJOS", this.trabajos);
+  })
       this.DatosClientesService.getClientPlate(placa).subscribe((resp: any) => {
         this.cliente = resp
         console.log("CLIENTE", this.cliente);

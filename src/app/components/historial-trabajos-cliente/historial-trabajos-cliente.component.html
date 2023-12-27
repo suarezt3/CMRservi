@@ -1,1 +1,15 @@
-<p>historial-trabajos-cliente works!</p>
+
+<h3>Historial de trabajos realizados</h3>
+  <nz-tabset>
+    @for (item of trabajosCliente; track item.id) {
+      <nz-tab [nzTitle]="item?.typeJobs">
+        <div class="dates">
+          <nz-tag [nzColor]="'geekblue'"> <span nz-icon nzType="calendar" nzTheme="outline"></span> {{item?.date}} <span nz-icon nzType="check-circle" nzTheme="outline"></span> </nz-tag>
+          <nz-tag [nzColor]="'volcano'"> <span nz-icon nzType="calendar" nzTheme="outline"></span> {{item?.nextDate}}</nz-tag>
+        </div>
+
+      </nz-tab>
+    }
+  </nz-tabset>
+
+
