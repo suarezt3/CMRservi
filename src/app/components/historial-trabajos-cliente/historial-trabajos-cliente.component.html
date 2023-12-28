@@ -1,4 +1,14 @@
-<h3>Historial de trabajos realizados</h3>
+
+
+@if (trabajosCliente != 0) {
+  <section class="jobs-header">
+    <div>
+      <h3>Historial de trabajos realizados</h3>
+    </div>
+  <div>
+    <button nz-button nzType="primary" nzSize="small"> <span nz-icon nzType="form" nzTheme="outline"></span>  Nuevo trabajo</button>
+  </div>
+  </section>
 <nz-tabset>
   @for (item of trabajosCliente; track item.id) {
   <nz-tab [nzTitle]="item?.typeJobs">
@@ -10,7 +20,7 @@
       nz-icon nzType="calendar"
       nzTheme="outline"
       >
-    </span> {{item?.date}}
+    </span> {{item?.date | date: 'longDate' : 'locale': 'ES'}}
         <span
           nz-tooltip
           nzTooltipTitle="Fecha del trabajo ralizado"
@@ -29,7 +39,7 @@
         nz-icon nzType="calendar"
         nzTheme="outline"
         >
-      </span> {{item?.nextDate}}
+      </span> {{item?.nextDate | date: 'longDate' : 'locale': 'ES'}}
       <span
             nz-tooltip
             [nzTooltipTitle]="textDate + item?.typeJobs"
@@ -42,19 +52,26 @@
       }
     </div>
 
-    <div>
-      <h4>Orden</h4>
-      <p>{{item?.numberOrder}}</p>
+    <div class="orden">
+      <h4>Orden: <nz-tag [nzColor]="'#65727c'"># {{item?.numberOrder}}</nz-tag> </h4>
     </div>
-    <div>
-      <h4>Costo</h4>
-      <p>{{item?.price}}</p>
+    <div class="precio">
+      <h4>Costo: &nbsp;<nz-tag [nzColor]="'#65727c'">{{item?.price | currency: '': 'symbol'}}</nz-tag></h4>
     </div>
-    <div>
+    <div class="descripcion">
       <h4>Descripcion del trabajo realizado</h4>
       <p>{{item?.description}}</p>
     </div>
-
+    <div class="btn-delete-job">
+      <button nz-button  nzSize="small" nzDanger="default"> <span nz-icon nzType="delete" nzTheme="outline"></span>Eliminar este trabajo</button>
+    </div>
   </nz-tab>
   }
 </nz-tabset>
+
+}@else {
+  <h4>Este cliente aún no tiene ningún trabajo registrado</h4>
+}
+
+
+

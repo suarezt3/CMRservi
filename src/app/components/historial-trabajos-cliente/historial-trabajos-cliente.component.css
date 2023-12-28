@@ -1,4 +1,19 @@
+
+.jobs-header {
+  display: flex;
+  justify-content: space-between;
+}
+
 .dates {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.precio {
+  margin-bottom: 20px;
+}
+
+.btn-delete-job {
+  margin-left: 55%;
 }
