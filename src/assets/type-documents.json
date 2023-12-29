@@ -1,0 +1,5 @@
+[
+  { "id": "CC", "nombre": "Cedula de ciudadania" },
+  { "id": "NIT", "nombre": "NIT" },
+  { "id": "N/A", "nombre": "No registra" }
+]

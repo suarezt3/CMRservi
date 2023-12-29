@@ -12,8 +12,7 @@ import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
-
-
+import { NzSelectModule } from 'ng-zorro-antd/select';
 
 
 
@@ -32,7 +31,8 @@ import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
     NzAvatarModule,
     NzTabsModule,
     NzTagModule,
-    NzToolTipModule
+    NzToolTipModule,
+    NzSelectModule
   ],
   exports: [
     NzTableModule,
@@ -45,7 +45,8 @@ import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
     NzAvatarModule,
     NzTabsModule,
     NzTagModule,
-    NzToolTipModule
+    NzToolTipModule,
+    NzSelectModule
   ]
 })
 export class NgZorroModule { }

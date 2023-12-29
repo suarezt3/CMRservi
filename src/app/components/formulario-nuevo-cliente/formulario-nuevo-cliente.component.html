@@ -1,1 +1,27 @@
-<p>formulario-nuevo-cliente works!</p>
+<section>
+  <div  [formGroup]="formNuevoCliente" (ngSubmit)="envioFormulario()">
+    <section>
+      <div>
+        <label for="nombres">Nombres</label>
+        <input
+          id="nombres"
+          nz-input placeholder="Juan Perez"
+          type="text"
+          formControlName="name"
+          >
+      </div>
+      <div>
+        <label for="tipoDocumento">Tipo de documento</label>
+        <div>
+          <nz-select class="select-documento" nzPlaceHolder="Seleccione una opcion">
+            @for (item of tiposDocumentos; track item?.id) {
+            <nz-option [nzValue]="item?.id" [nzLabel]="item?.nombre" ></nz-option>
+            }
+          </nz-select>
+        </div>
+      </div>
+    </section>
+
+
+  </div>
+</section>

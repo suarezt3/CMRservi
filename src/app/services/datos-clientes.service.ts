@@ -60,6 +60,15 @@ getClientPlate(placa: string) {
   }
 
 
+/**
+ *
+ * @returns Obtener los tipos de documentos
+ */
+getTypeDocuments() {
+  return this.http.get<any>('../../assets/type-documents.json')
+}
+
+
 }
 
 
