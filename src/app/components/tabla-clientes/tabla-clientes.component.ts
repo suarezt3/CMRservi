@@ -9,6 +9,8 @@ import { SearchVehiculoComponent } from '../search-vehiculo/search-vehiculo.comp
 import { RouterModule } from '@angular/router';
 import { DetallesClienteComponent } from '../../pages/detalles-cliente/detalles-cliente.component';
 import { HistorialTrabajosClienteComponent } from '../historial-trabajos-cliente/historial-trabajos-cliente.component';
+import { Cliente } from '../../interfaces/cliente';
+import { Trabajo } from '../../interfaces/trabajos';
 
 
 @Component({
@@ -31,9 +33,9 @@ export class TablaClientesComponent implements OnInit {
 
 
   public visible      : boolean   = false
-  public datosClientes: any[] = [] || undefined;
-  public cliente      : any[] = [] || undefined;
-  public trabajos     : any[] = [] || undefined;
+  public datosClientes: Cliente[] = [] || undefined;
+  public cliente      : Cliente[] = [] || undefined;
+  public trabajos     : Trabajo[] = [] || undefined;
 
 
   private DatosClientesService = inject( DatosClientesService );
