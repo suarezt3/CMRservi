@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { ValidatorPlateService } from '../../services/plate.service';
 import { NgZorroModule } from '../../ng-zorro/ng-zorro.module';
 import { DatosClientesService } from '../../services/datos-clientes.service';
+import { BRANDS } from '../../interfaces/marcas-vehiculos';
 
 
 @Component({
@@ -17,6 +18,7 @@ export class FormularioNuevoClienteComponent implements OnInit {
 
   public formNuevoCliente!: FormGroup;
   public tiposDocumentos!: any[]
+  public brands!: BRANDS[];
   public limitNumber      : string  = "^([0-9]+)$";
 
 
@@ -28,6 +30,10 @@ export class FormularioNuevoClienteComponent implements OnInit {
 
     this.dataService.getTypeDocuments().subscribe((documento) => {
       this.tiposDocumentos = documento
+    })
+
+    this.dataService.getBrandVehicles().subscribe((marcas: any) => {
+      this.brands = marcas
     })
 
     this.formNuevoCliente = this.fb.group({

@@ -60,6 +60,19 @@ getClientPlate(placa: string) {
   }
 
 
+  /**
+ *
+ * @returns Obtener las marcas de vehiculos
+ */
+getBrandVehicles() {
+  let headers = new HttpHeaders({
+    'apikey'       : environment.supabaseKey,
+    'Authorization': environment.authorization
+  })
+   return this.http.get<any>(`${this.url}/brands`, {headers}).pipe()
+}
+
+
 /**
  *
  * @returns Obtener los tipos de documentos
