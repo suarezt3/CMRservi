@@ -1,3 +1,21 @@
+.container-form {
+  border: 1px solid rgb(0, 0, 0);
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.title-form {
+  text-align: center;
+}
+
+.container-inputs {
+  display: flex;
+  justify-content: center;
+  gap: 6%;
+}
+
+
 .select {
   margin: 0 8px 10px 0;
   width: 190px;

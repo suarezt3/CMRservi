@@ -1,50 +1,58 @@
-<section>
+<section class="container-form">
+  <h1 class="title-form">Ingresa los datos del cliente</h1>
   <div  [formGroup]="formNuevoCliente" (ngSubmit)="envioFormulario()">
-    <section>
+    <section class="container-inputs">
+
       <div>
-        <label for="nombres">Nombres</label>
-        <input
-          id="nombres"
-          nz-input
-          placeholder="Juan Perez"
-          type="text"
-          formControlName="name"
-          >
-      </div>
-      <div>
-        <label for="tipoDocumento">Tipo de documento</label>
         <div>
-          <nz-select class="select" formControlName="documentType" nzPlaceHolder="Seleccione una opcion">
-            @for (item of tiposDocumentos; track item?.id) {
-            <nz-option [nzValue]="item?.id" [nzLabel]="item?.nombre" ></nz-option>
-            }
-          </nz-select>
+          <label for="nombres">Nombres</label>
+          <input id="nombres" nz-input type="text" formControlName="name">
+        </div>
+        <div>
+          <label for="tipoDocumento">Tipo de documento</label>
+          <div>
+            <nz-select class="select" formControlName="documentType" nzPlaceHolder="Seleccione una opcion">
+              @for (item of tiposDocumentos; track item?.id) {
+              <nz-option [nzValue]="item?.id" [nzLabel]="item?.nombre" ></nz-option>
+              }
+            </nz-select>
+          </div>
+        </div>
+        <div>
+          <label for="numeroDocumento">Numero de documento</label>
+          <input id="numeroDocumento" formControlName="numberDocument" nz-input type="text">
+        </div>
+        <div>
+          <label for="correo">Correo</label>
+          <input id="correo" formControlName="email" nz-input type="text">
         </div>
       </div>
+
       <div>
-        <label for="numeroDocumento">Numero de documento</label>
-        <input id="numeroDocumento" formControlName="numberDocument" nz-input type="text">
-      </div>
-      <div>
-        <label for="correo">Correo</label>
-        <input id="correo" formControlName="email" nz-input type="text">
-      </div>
-      <div>
-        <label for="telefono">Contacto</label>
-        <input id="telefono" formControlName="phone" nz-input type="text">
-      </div>
-      <div>
-        <label for="MarcaVehiculo">Marca del vehiculo</label>
         <div>
-          <nz-select class="select" formControlName="vehicleBrand" nzPlaceHolder="Seleccione una opcion">
-            @for (item of brands; track item?.id) {
-              <nz-option [nzValue]="item?.name" [nzLabel]="item.name"></nz-option>
-            }
-          </nz-select>
+          <label for="telefono">Contacto</label>
+          <input id="telefono" formControlName="phone" nz-input type="text">
+        </div>
+        <div>
+          <label for="MarcaVehiculo">Marca del vehiculo</label>
+          <div>
+            <nz-select class="select" formControlName="vehicleBrand" nzPlaceHolder="Seleccione una opcion">
+              @for (item of brands; track item?.id) {
+                <nz-option [nzValue]="item?.name" [nzLabel]="item.name"></nz-option>
+              }
+            </nz-select>
+          </div>
+        </div>
+        <div>
+          <label for="modelo">Modelo</label>
+          <input id="modelo" formControlName="vehicle" nz-input type="text">
+        </div>
+        <div>
+          <label for="placa">Placa</label>
+          <input id="placa" formControlName="plate" nz-input type="text">
         </div>
       </div>
+
     </section>
-
-
   </div>
 </section>
