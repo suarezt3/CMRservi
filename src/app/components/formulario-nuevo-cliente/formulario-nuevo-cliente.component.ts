@@ -4,6 +4,7 @@ import { ValidatorPlateService } from '../../services/plate.service';
 import { NgZorroModule } from '../../ng-zorro/ng-zorro.module';
 import { DatosClientesService } from '../../services/datos-clientes.service';
 import { BRANDS } from '../../interfaces/marcas-vehiculos';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -15,16 +16,17 @@ import { BRANDS } from '../../interfaces/marcas-vehiculos';
 })
 export class FormularioNuevoClienteComponent implements OnInit {
 
-
+  public id: any;
   public formNuevoCliente!: FormGroup;
   public tiposDocumentos!: any[]
   public brands!: BRANDS[];
   public limitNumber      : string  = "^([0-9]+)$";
 
 
-  private fb                    = inject(FormBuilder)
-  private validatorPlateService = inject(ValidatorPlateService)
-  private dataService           = inject(DatosClientesService)
+  private fb                    = inject(FormBuilder);
+  private validatorPlateService = inject(ValidatorPlateService);
+  private dataService           = inject(DatosClientesService);
+  private router                = inject(Router)
 
   ngOnInit() {
 
@@ -49,7 +51,39 @@ export class FormularioNuevoClienteComponent implements OnInit {
   }
 
 
+  /**
+   * Metodo para enviar el formulario
+   */
   envioFormulario() {
+    const form = [{
+      name             : this.formNuevoCliente.get('name')?.value,
+      documentType     : this.formNuevoCliente.get('documentType')?.value,
+      numberDocument   : this.formNuevoCliente.get('numberDocument')?.value,
+      email            : this.formNuevoCliente.get('email')?.value,
+      phone            : this.formNuevoCliente.get('phone')?.value,
+      vehicle          : this.formNuevoCliente.get('vehicle')?.value,
+      vehicleBrand     : this.formNuevoCliente.get('vehicleBrand')?.value,
+      plate            : this.formNuevoCliente.get('plate')?.value.toUpperCase()
+    }];
+
+   if(this.formNuevoCliente.invalid && !this.id) {
+     this.formNuevoCliente.markAllAsTouched();
+   }else if(!this.id) {
+     this.dataService.createClient(form).subscribe()
+     //!Debe ir la notificacion de creacion cliente
+     this.formNuevoCliente.reset()
+     }else{
+       this.formNuevoCliente.get('plate')?.setAsyncValidators(null)
+       this.formNuevoCliente.get('plate')?.disable
+       let editForm = this.formNuevoCliente.value
+       this.dataService.editClientDocument(this.id, editForm).subscribe();
+       //!Debe ir la notificacion de notificacion cliente
+       setTimeout(() => {
+         this.router.navigate([this.id]);
+       },2000)
+
+     }
+
 
   }
 
