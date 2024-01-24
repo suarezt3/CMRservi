@@ -1,8 +1,11 @@
 .container-form {
-  border: 1px solid rgb(0, 0, 0);
   width: 60%;
   margin-left: auto;
   margin-right: auto;
+}
+
+.group-inputs {
+  width: 100%;
 }
 
 .title-form {
@@ -10,13 +13,25 @@
 }
 
 .container-inputs {
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
   display: flex;
-  justify-content: center;
+  justify-content:space-around;
   gap: 6%;
+  margin-bottom: 15px;
 }
 
+.block-input {
+  margin-bottom: 10px;
+}
+
+.container-btn {
+  margin-left: auto;
+  margin-right: auto ;
+  width: 50%;
+}
 
 .select {
-  margin: 0 8px 10px 0;
-  width: 190px;
+  width: 100%;
 }

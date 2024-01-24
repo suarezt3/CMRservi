@@ -3,12 +3,12 @@
   <div  [formGroup]="formNuevoCliente" (ngSubmit)="envioFormulario()">
     <section class="container-inputs">
 
-      <div>
-        <div>
+      <div class="group-inputs">
+        <div class="block-input">
           <label for="nombres">Nombres</label>
           <input id="nombres" nz-input type="text" formControlName="name">
         </div>
-        <div>
+        <div class="block-input">
           <label for="tipoDocumento">Tipo de documento</label>
           <div>
             <nz-select class="select" formControlName="documentType" nzPlaceHolder="Seleccione una opcion">
@@ -18,22 +18,22 @@
             </nz-select>
           </div>
         </div>
-        <div>
+        <div class="block-input">
           <label for="numeroDocumento">Numero de documento</label>
           <input id="numeroDocumento" formControlName="numberDocument" nz-input type="text">
         </div>
-        <div>
+        <div class="block-input">
           <label for="correo">Correo</label>
           <input id="correo" formControlName="email" nz-input type="text">
         </div>
       </div>
 
-      <div>
-        <div>
+      <div class="group-inputs">
+        <div class="block-input">
           <label for="telefono">Contacto</label>
           <input id="telefono" formControlName="phone" nz-input type="text">
         </div>
-        <div>
+        <div class="block-input">
           <label for="MarcaVehiculo">Marca del vehiculo</label>
           <div>
             <nz-select class="select" formControlName="vehicleBrand" nzPlaceHolder="Seleccione una opcion">
@@ -43,16 +43,19 @@
             </nz-select>
           </div>
         </div>
-        <div>
+        <div class="block-input">
           <label for="modelo">Modelo</label>
           <input id="modelo" formControlName="vehicle" nz-input type="text">
         </div>
-        <div>
+        <div class="block-input">
           <label for="placa">Placa</label>
           <input id="placa" formControlName="plate" nz-input type="text">
         </div>
       </div>
 
     </section>
+    <div class="container-btn">
+      <button nz-button nzType="primary" nzBlock>Enviar formulario</button>
+    </div>
   </div>
 </section>
