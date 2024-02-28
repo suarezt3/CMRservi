@@ -7,6 +7,11 @@
         <div class="block-input">
           <label for="nombres">Nombres</label>
           <input id="nombres" nz-input type="text" formControlName="name">
+          <div class="error" *ngIf="invalidField('name')" >
+            <span  *ngIf="formNuevoCliente.controls?.['name']?.errors?.['required']" > Campo obligatorio </span>
+            <span  *ngIf="formNuevoCliente.controls?.['name']?.errors?.['minlength']" > Minimo 5 caracteres </span>
+            <span  *ngIf="formNuevoCliente.controls?.['name']?.errors?.['maxlength']" > Maximo 50 caracteres </span>
+          </div>
         </div>
         <div class="block-input">
           <label for="tipoDocumento">Tipo de documento</label>
@@ -16,22 +21,50 @@
               <nz-option [nzValue]="item?.id" [nzLabel]="item?.nombre" ></nz-option>
               }
             </nz-select>
+            <div class="error" *ngIf="invalidField('documentType')" >
+              <span  *ngIf="formNuevoCliente.controls?.['documentType']?.errors?.['required']" > Campo obligatorio </span>
+            </div>
           </div>
         </div>
         <div class="block-input">
           <label for="numeroDocumento">Numero de documento</label>
-          <input id="numeroDocumento" formControlName="numberDocument" nz-input type="text">
+          <input
+            maxlength="12"
+            minlength="4"
+            id="numeroDocumento"
+            formControlName="numberDocument"
+            nz-input
+            type="text">
+          <div class="error" *ngIf="invalidField('numberDocument')" >
+            <span  *ngIf="formNuevoCliente.controls?.['numberDocument']?.errors?.['pattern']"> Solo se permiten numeros </span>
+            <span  *ngIf="formNuevoCliente.controls?.['numberDocument']?.errors?.['minlength']"> Minimo 4 caracteres </span>
+            <span  *ngIf="formNuevoCliente.controls?.['numberDocument']?.errors?.['maxlength']"> Maximo 12 caracteres </span>
+          </div>
         </div>
         <div class="block-input">
           <label for="correo">Correo</label>
           <input id="correo" formControlName="email" nz-input type="text">
+          <div class="error" *ngIf="invalidField('email')" >
+            <span  *ngIf="formNuevoCliente.controls?.['email']?.errors?.['email']" > Ingrese un email valido </span>
+          </div>
         </div>
       </div>
 
       <div class="group-inputs">
         <div class="block-input">
           <label for="telefono">Contacto</label>
-          <input id="telefono" formControlName="phone" nz-input type="text">
+          <input
+              maxlength="11"
+              minlength="4"
+              id="telefono"
+              formControlName="phone"
+              nz-input
+              type="text">
+          <div class="error" *ngIf="invalidField('phone')" >
+            <span  *ngIf="formNuevoCliente.controls?.['phone']?.errors?.['pattern']"> Solo se permiten numeros </span>
+            <span  *ngIf="formNuevoCliente.controls?.['phone']?.errors?.['minlength']"> Minimo 4 caracteres </span>
+            <span  *ngIf="formNuevoCliente.controls?.['phone']?.errors?.['maxlength']"> Maximo 11 caracteres </span>
+          </div>
         </div>
         <div class="block-input">
           <label for="MarcaVehiculo">Marca del vehiculo</label>
@@ -41,21 +74,34 @@
                 <nz-option [nzValue]="item?.name" [nzLabel]="item.name"></nz-option>
               }
             </nz-select>
+            <div class="error" *ngIf="invalidField('vehicleBrand')" >
+              <span  *ngIf="formNuevoCliente.controls?.['vehicleBrand']?.errors?.['required']" > Campo obligatorio </span>
+            </div>
           </div>
         </div>
         <div class="block-input">
           <label for="modelo">Modelo</label>
           <input id="modelo" formControlName="vehicle" nz-input type="text">
+          <div class="error" *ngIf="invalidField('vehicle')" >
+            <span  *ngIf="formNuevoCliente.controls?.['vehicle']?.errors?.['required']" > Campo obligatorio </span>
+            <span  *ngIf="formNuevoCliente.controls?.['vehicle']?.errors?.['maxlength']" > Maximo 20 caracteres </span>
+          </div>
         </div>
         <div class="block-input">
           <label for="placa">Placa</label>
           <input id="placa" formControlName="plate" nz-input type="text">
+          <div class="error" *ngIf="invalidField('plate')" >
+            <span  *ngIf="formNuevoCliente.controls?.['plate']?.errors?.['required']" > Campo Obligatorio </span>
+            <span  *ngIf="formNuevoCliente.controls?.['plate']?.errors?.['minlength']" > Minimo 6 caracteres </span>
+            <span  *ngIf="formNuevoCliente.controls?.['plate']?.errors?.['maxlength']" > Maximo 6 caracteres </span>
+            <span  *ngIf="formNuevoCliente.controls?.['plate']?.errors?.['plateExist']" > Esta placa ya existe en la base de datos </span>
+          </div>
         </div>
       </div>
 
     </section>
     <div class="container-btn">
-      <button nz-button nzType="primary" nzBlock>Enviar formulario</button>
+      <button (click)="envioFormulario()" nz-button nzType="primary" nzBlock>Enviar formulario</button>
     </div>
   </div>
 </section>
