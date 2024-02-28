@@ -85,11 +85,11 @@ export class FormularioNuevoClienteComponent implements OnInit {
    if(this.formNuevoCliente.invalid && !this.id) {
      this.formNuevoCliente.markAllAsTouched();
      let status = "error"
-      this.notificationError(status)
+      this.notifications(status)
    }else if(!this.id) {
      this.dataService.createClient(form).subscribe()
      let status = "success"
-     this.notificationSuccess(status)
+     this.notifications(status)
      this.formNuevoCliente.reset()
      }else{
        this.formNuevoCliente.get('plate')?.setAsyncValidators(null)
@@ -104,21 +104,21 @@ export class FormularioNuevoClienteComponent implements OnInit {
   }
 
 
-  notificationSuccess(type: string): void {
-
-    this.notification.create(
-      type,
-      'Envió exitoso',
-      'El cliente se ha creado satisfactoriamente.'
-    );
+  notifications(type: string): void {
+    if(type === "success"){
+      this.notification.create(
+        type,
+        'Envió exitoso',
+        'El cliente se ha creado satisfactoriamente.'
+      );
+    }else if(type === "error" ) {
+      this.notification.create(
+        type,
+        'Algo no está bien',
+        'Por favor revisa que el formulario no tenga errores.'
+      );
+    }
   }
 
-  notificationError(type: string): void {
-    this.notification.create(
-      type,
-      'Algo no está bien',
-      'Por favor revisa que el formulario no tenga errores.'
-    );
-  }
 
 }
