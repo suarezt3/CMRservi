@@ -6,5 +6,6 @@ export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/clientes' },
   { path: 'clientes', loadChildren: () => import('./pages/welcome/welcome.routes').then(m => m.WELCOME_ROUTES) },
   { path: 'clientes/:id', component: DetallesClienteComponent },
-  { path: 'nuevo-cliente', component: NuevoClienteComponent }
+  { path: 'nuevo-cliente', component: NuevoClienteComponent },
+  { path: 'editar/:id', component: NuevoClienteComponent },
 ];

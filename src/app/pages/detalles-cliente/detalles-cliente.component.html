@@ -1,5 +1,11 @@
 <div class="btn-edit-client">
-  <button nz-button nzType="default" nzSize="small"> <span nz-icon nzType="edit" nzTheme="outline"></span>  Editar</button>
+  <button
+    nz-button
+    nzType="default"
+    nzSize="small"
+    [routerLink]="['/editar', cliente[0]?.plate || undefined]" routerLinkActive="router-link-active"
+    >
+    <span nz-icon nzType="edit" nzTheme="outline"></span>  Editar</button>
   </div>
 <div class="header">
   <section class="container">
