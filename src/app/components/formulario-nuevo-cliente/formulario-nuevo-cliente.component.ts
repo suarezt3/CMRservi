@@ -6,6 +6,8 @@ import { DatosClientesService } from '../../services/datos-clientes.service';
 import { BRANDS } from '../../interfaces/marcas-vehiculos';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
+
 
 
 @Component({
@@ -29,6 +31,7 @@ export class FormularioNuevoClienteComponent implements OnInit {
   private dataService           = inject(DatosClientesService);
   private router                = inject(Router);
   private activatedRoute        = inject(ActivatedRoute);
+  private notification          = inject(NzNotificationService)
 
   ngOnInit() {
 
@@ -81,9 +84,12 @@ export class FormularioNuevoClienteComponent implements OnInit {
 
    if(this.formNuevoCliente.invalid && !this.id) {
      this.formNuevoCliente.markAllAsTouched();
+     let status = "error"
+      this.notificationError(status)
    }else if(!this.id) {
      this.dataService.createClient(form).subscribe()
-     //!Debe ir la notificacion de creacion cliente
+     let status = "success"
+     this.notificationSuccess(status)
      this.formNuevoCliente.reset()
      }else{
        this.formNuevoCliente.get('plate')?.setAsyncValidators(null)
@@ -94,10 +100,25 @@ export class FormularioNuevoClienteComponent implements OnInit {
        setTimeout(() => {
          this.router.navigate([this.id]);
        },2000)
-
      }
+  }
 
 
+  notificationSuccess(type: string): void {
+
+    this.notification.create(
+      type,
+      'Envió exitoso',
+      'El cliente se ha creado satisfactoriamente.'
+    );
+  }
+
+  notificationError(type: string): void {
+    this.notification.create(
+      type,
+      'Algo no está bien',
+      'Por favor revisa que el formulario no tenga errores.'
+    );
   }
 
 }
