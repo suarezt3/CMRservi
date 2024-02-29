@@ -32,6 +32,10 @@
   width: 50%;
 }
 
+.btn {
+  margin-bottom: 10px;
+}
+
 .select {
   width: 100%;
 }

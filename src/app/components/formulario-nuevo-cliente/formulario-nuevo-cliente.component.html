@@ -101,7 +101,18 @@
 
     </section>
     <div class="container-btn">
-      <button (click)="envioFormulario()" nz-button nzType="primary" nzBlock>Enviar formulario</button>
+      <button
+        class="btn"
+        (click)="envioFormulario()"
+        nz-button
+        nzType="primary"
+        nzBlock
+        >
+        {{this.id ? "Editar": "Enviar"}}
+      </button>
+      @if (this.id) {
+        <nz-alert nzType="warning" nzMessage="Recuerda editar solo los datos necesarios" nzShowIcon></nz-alert>
+      }
     </div>
   </div>
 </section>

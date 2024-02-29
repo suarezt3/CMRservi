@@ -33,6 +33,8 @@ export class FormularioNuevoClienteComponent implements OnInit {
   private activatedRoute        = inject(ActivatedRoute);
   private notification          = inject(NzNotificationService)
 
+  constructor() {this.obtenerParametroUrl()}
+
   ngOnInit() {
 
     this.dataService.getTypeDocuments().subscribe((documento) => {
@@ -54,7 +56,31 @@ export class FormularioNuevoClienteComponent implements OnInit {
       vehicleBrand   : ['', [Validators.required]],
       plate          : [''.toUpperCase(), [Validators.required, Validators.minLength(6), Validators.maxLength(6)], [this.validatorPlateService ]]
     })
+
   }
+
+  obtenerParametroUrl() {
+    this.activatedRoute.paramMap.subscribe((params: any) => {
+      this.id = params.get('id');
+      if (this.id) {
+        this.dataService.getClientPlate(this.id).subscribe((res: any) => {
+          console.log("RESPUESTA", res);
+
+           this.formNuevoCliente.patchValue({
+             name: res[0]?.name,
+             documentType: res[0]?.documentType,
+             phone: res[0]?.phone,
+             vehicle: res[0]?.vehicle,
+             numberDocument: res[0]?.numberDocument,
+             email: res[0]?.email,
+             vehicleBrand: res[0]?.vehicleBrand,
+             plate: res[0]?.plate
+           });
+        });
+      }
+    });
+  }
+
 
    /**
    *
@@ -96,9 +122,10 @@ export class FormularioNuevoClienteComponent implements OnInit {
        this.formNuevoCliente.get('plate')?.disable
        let editForm = this.formNuevoCliente.value
        this.dataService.editClientDocument(this.id, editForm).subscribe();
-       //!Debe ir la notificacion de edicion datos del cliente
+       let status = "success"
+       this.notifications(status)
        setTimeout(() => {
-         this.router.navigate([this.id]);
+         this.router.navigate(['/clientes']);
        },2000)
      }
   }

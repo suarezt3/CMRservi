@@ -3,32 +3,32 @@
     nz-button
     nzType="default"
     nzSize="small"
-    [routerLink]="['/editar', cliente[0]?.plate || undefined]" routerLinkActive="router-link-active"
+    [routerLink]="['/editar', cliente?.plate || undefined]" routerLinkActive="router-link-active"
     >
     <span nz-icon nzType="edit" nzTheme="outline"></span>  Editar</button>
   </div>
 <div class="header">
   <section class="container">
     <div class="container-placa">
-      <div class=" placa texto-placa">{{cliente[0]?.plate | slice:0:3}}</div>
+      <div class=" placa texto-placa">{{cliente?.plate | slice:0:3}}</div>
       <div class="icono-placa"></div>
-      <div class=" placa numero-placa">{{cliente[0]?.plate | slice:3}}</div>
+      <div class=" placa numero-placa">{{cliente?.plate | slice:3}}</div>
     </div>
     <p class="texto-colombia">COLOMBIA</p>
   </section>
   <div class="container-info">
-    <h4>{{ cliente[0]?.name }}</h4>
-    <h5> {{ cliente[0]?.phone ? cliente[0]?.phone : 'No registra telefono' }} </h5>
-    <h5> {{ cliente[0]?.email ? cliente[0]?.email : 'No registra correo' }} </h5>
+    <h4>{{ cliente?.name }}</h4>
+    <h5> {{ cliente?.phone ? cliente?.phone : 'No registra telefono' }} </h5>
+    <h5> {{ cliente?.email ? cliente?.email : 'No registra correo' }} </h5>
   </div>
 </div>
 <section class="container-brand">
   <div class="brands brand">
-    <h4>{{cliente[0]?.vehicleBrand | uppercase}}</h4>
+    <h4>{{cliente?.vehicleBrand | uppercase}}</h4>
   </div>
   <div class=" brands vehicle">
     <h4>
-      {{cliente[0]?.vehicle}}
+      {{cliente?.vehicle}}
     </h4>
   </div>
 </section>

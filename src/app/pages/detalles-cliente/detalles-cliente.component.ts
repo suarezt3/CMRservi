@@ -15,7 +15,7 @@ import { RouterLink } from '@angular/router';
 })
 export class DetallesClienteComponent implements OnInit {
 
-  @Input() cliente: any[] = [] || undefined
+  @Input() cliente: any = "" || undefined
 
   private DatosClientesService = inject( DatosClientesService );
 
