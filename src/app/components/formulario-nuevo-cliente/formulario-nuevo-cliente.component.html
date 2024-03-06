@@ -91,7 +91,7 @@
           <label for="placa">Placa</label>
           <input id="placa" formControlName="plate" nz-input type="text">
           <div class="error" *ngIf="invalidField('plate')" >
-            <span  *ngIf="formNuevoCliente.controls?.['plate']?.errors?.['required']" > Campo Obligatorio </span>
+            <span  *ngIf="formNuevoCliente.controls?.['plate']?.errors?.['required']" > Campo obligatorio </span>
             <span  *ngIf="formNuevoCliente.controls?.['plate']?.errors?.['minlength']" > Minimo 6 caracteres </span>
             <span  *ngIf="formNuevoCliente.controls?.['plate']?.errors?.['maxlength']" > Maximo 6 caracteres </span>
             <span  *ngIf="formNuevoCliente.controls?.['plate']?.errors?.['plateExist']" > Esta placa ya existe en la base de datos </span>
