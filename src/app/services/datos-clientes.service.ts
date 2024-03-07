@@ -30,6 +30,19 @@ export class DatosClientesService {
 }
 
 
+/**
+  *
+  * @returns Trae la tabla de los trabajos
+  */
+getJobs() {
+  let headers = new HttpHeaders({
+    'apikey'       : environment.supabaseKey,
+    'Authorization': environment.authorization,
+  })
+   return this.http.get(`${this.url}/jobs`, {headers}).pipe()
+  }
+
+
   /**
    *
    * @param body Metodo para enviar el formualario
