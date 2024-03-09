@@ -1,6 +1,12 @@
+<h2>Total trabajos realizados: <span class="total">{{trabajos.length}}</span></h2>
+<hr>
 <nz-table
 #nzTable
-[nzData]="trabajos">
+[nzData]="trabajos"
+[nzScroll]="{y:'720px'}"
+[nzShowPagination]="false"
+[nzFrontPagination]="false"
+>
   <thead>
     <tr>
       <th>Cliente</th>
@@ -16,10 +22,6 @@
         <td>{{item?.plate}}</td>
         <td>{{item?.typeJobs}}</td>
         <td>{{item?.date}}</td>
-        <td>
-          <a>Action 一 {{item?.name}}</a>
-          <a>Ver mas</a>
-        </td>
       </tr>
     }
   </tbody>
