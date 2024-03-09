@@ -12,18 +12,18 @@ nzTableLayout="fixed"
 >
   <thead>
     <tr>
-      <th>Nombre
+      <th class="head-table">Nombre
         <app-search-name [Data]="datosClientes" (ResultadoBuscador)="datosClientes = $event"></app-search-name>
       </th>
-      <th>N° documento</th>
-      <th>Placa
+      <th class="head-table">N° documento</th>
+      <th class="head-table">Placa
         <app-search-placa [Data]="datosClientes" (ResultadoBuscador)="datosClientes = $event"></app-search-placa>
       </th>
-      <th>Modelo</th>
-      <th>Vehiculo
+      <th class="head-table">Modelo</th>
+      <th class="head-table">Vehiculo
         <app-search-vehiculo  [Data]="datosClientes" (ResultadoBuscador)="datosClientes = $event"></app-search-vehiculo>
       </th>
-      <th>Acciones</th>
+      <th class="head-table">Acciones</th>
     </tr>
   </thead>
   <tbody>
@@ -31,7 +31,16 @@ nzTableLayout="fixed"
       <tr>
         <td>{{ data?.name ? data?.name : 'NO REGISTRA' }}</td>
         <td>{{ data?.numberDocument ? data?.numberDocument : 'NO REGISTRA'}}</td>
-        <td>{{ data?.plate ? data?.plate : 'NO REGISTRA'}}</td>
+        <td>
+          <section class="container">
+            <div class="container-placa">
+              <div class="placa texto-placa">{{data?.plate | slice:0:3}}</div>
+              <div class="icono-placa"></div>
+              <div class="placa numero-placa">{{data?.plate | slice:3}}</div>
+            </div>
+            <p class="texto-colombia">COLOMBIA</p>
+          </section>
+        </td>
         <td>{{ data?.vehicle }}</td>
         <td>{{ data?.vehicleBrand }}</td>
         <td>

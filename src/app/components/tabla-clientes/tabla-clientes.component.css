@@ -1,6 +1,57 @@
 
+:host() {
+  font-family: "Nunito", sans-serif;
+}
+
+.head-table {
+  background-color: rgba(0, 94, 255, 0.081);
+  font-weight: bold;
+}
 
 .btn {
   margin-right: 10px;
   margin-top: 10px;
+}
+
+.container {
+  width: 100px;
+  height: 50px;
+  background-color: #fca103;
+  border-radius: 5px;
+  border: 2px solid #000000;
+  box-shadow: 0px 0px 0px 2px #fca103;
+}
+
+.container-placa {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.container-info {
+  font-weight: bold;
+  margin-top: -10px;
+}
+
+
+.icono-placa {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: #000000;
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
+.placa {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.texto-colombia {
+  text-align: center;
+  margin-top: -10px;
+  font-size: 0.7rem;
 }

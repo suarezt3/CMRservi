@@ -11,6 +11,7 @@ import { DetallesClienteComponent } from '../../pages/detalles-cliente/detalles-
 import { HistorialTrabajosClienteComponent } from '../historial-trabajos-cliente/historial-trabajos-cliente.component';
 import { Cliente } from '../../interfaces/cliente';
 import { Trabajo } from '../../interfaces/trabajos';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
@@ -19,6 +20,7 @@ import { Trabajo } from '../../interfaces/trabajos';
   templateUrl: './tabla-clientes.component.html',
   styleUrl: './tabla-clientes.component.css',
   imports: [
+    CommonModule,
     NgZorroModule,
     FormsModule,
     RouterModule,

@@ -2,11 +2,12 @@ import { Component, OnInit, inject } from '@angular/core';
 import { NgZorroModule } from '../../ng-zorro/ng-zorro.module';
 import { DatosClientesService } from '../../services/datos-clientes.service';
 import { Trabajo } from '../../interfaces/trabajos';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-tabla-trabajos',
   standalone: true,
-  imports: [NgZorroModule],
+  imports: [NgZorroModule, CommonModule,],
   templateUrl: './tabla-trabajos.component.html',
   styleUrl: './tabla-trabajos.component.css'
 })

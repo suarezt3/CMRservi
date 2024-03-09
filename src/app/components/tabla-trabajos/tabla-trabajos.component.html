@@ -9,17 +9,27 @@
 >
   <thead>
     <tr>
-      <th>Cliente</th>
-      <th>Placa</th>
-      <th>Trabajo realizado</th>
-      <th>Fecha</th>
+      <th class="head-table">Cliente</th>
+      <th class="head-table">Placa</th>
+      <th class="head-table">Trabajo realizado</th>
+      <th class="head-table">Fecha</th>
     </tr>
   </thead>
   <tbody>
     @for (item of trabajos; track $index) {
       <tr>
         <td>{{item?.name}}</td>
-        <td>{{item?.plate}}</td>
+        <!-- <td>{{item?.plate}}</td> -->
+        <td>
+          <section class="container">
+            <div class="container-placa">
+              <div class="placa texto-placa">{{item?.plate | slice:0:3}}</div>
+              <div class="icono-placa"></div>
+              <div class="placa numero-placa">{{item?.plate | slice:3}}</div>
+            </div>
+            <p class="texto-colombia">COLOMBIA</p>
+          </section>
+        </td>
         <td>{{item?.typeJobs}}</td>
         <td>{{item?.date}}</td>
       </tr>
