@@ -45,7 +45,7 @@ nzTableLayout="fixed"
         <td>{{ data?.vehicleBrand }}</td>
         <td>
         <button (click)="open(data?.plate)" class="btn" nz-button nzType="primary" > Ver mas</button>
-        <button class="btn" nz-button nzType="default" > Agregar trabajo</button>
+        <button class="btn" nz-button nzType="default" (click)="mostrarModal()" > Agregar trabajo</button>
         </td>
       </tr>
     }
@@ -67,5 +67,15 @@ nzTableLayout="fixed"
     </ng-container>
   </nz-drawer>
 }
+
+<nz-modal
+[(nzVisible)]="modalVisible"
+nzTitle="Ingresa los datos del trabajo realizado"
+(nzOnCancel)="cancelarModal()"
+(nzOnOk)="enviarFormulario()"
+[nzOkLoading]="isOkLoading"
+>
+<app-formulario-nuevo-trabajo *nzModalContent/>
+</nz-modal>
 
 

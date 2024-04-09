@@ -125,6 +125,13 @@ getTypeDocuments() {
   return this.http.get<any>('../../assets/type-documents.json')
 }
 
+/**
+ *
+ * @returns Obtener los tipos de trabajo
+ */
+getTypeJobs() {
+  return this.http.get<any>('../../assets/type-jobs.json')
+}
 
 }
 

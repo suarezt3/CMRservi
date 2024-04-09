@@ -1,1 +1,14 @@
-<p>formulario-nuevo-trabajo works!</p>
+<div>
+  <form [formGroup]="formNuevoTrabajo" (ngSubmit)="envioFormulario()">
+    <div>
+      <label for="">Tipo de trabajo realizado</label>
+      <div>
+        <nz-select class="select" formControlName="tipoTrabajo" nzPlaceHolder="Seleccione una opcion">
+          @for (item of tiposTrabajos; track item?.id) {
+          <nz-option [nzValue]="item?.id" [nzLabel]="item?.nombre" ></nz-option>
+          }
+        </nz-select>
+      </div>
+    </div>
+  </form>
+</div>

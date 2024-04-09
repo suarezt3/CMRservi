@@ -12,6 +12,7 @@ import { HistorialTrabajosClienteComponent } from '../historial-trabajos-cliente
 import { Cliente } from '../../interfaces/cliente';
 import { Trabajo } from '../../interfaces/trabajos';
 import { CommonModule } from '@angular/common';
+import { FormularioNuevoTrabajoComponent } from '../formulario-nuevo-trabajo/formulario-nuevo-trabajo.component';
 
 
 @Component({
@@ -28,12 +29,14 @@ import { CommonModule } from '@angular/common';
     SearchPlacaComponent,
     SearchVehiculoComponent,
     DetallesClienteComponent,
-    HistorialTrabajosClienteComponent
+    HistorialTrabajosClienteComponent,
+    FormularioNuevoTrabajoComponent
   ],
 })
 export class TablaClientesComponent implements OnInit {
 
-
+  public modalVisible : boolean   = false
+  public isOkLoading  : boolean   = false;
   public visible      : boolean   = false
   public datosClientes: Cliente[] = [] || undefined;
   public cliente      : Cliente[] = [] || undefined;
@@ -68,5 +71,23 @@ export class TablaClientesComponent implements OnInit {
     this.visible = false;
   }
 
+  /**
+   * Modal que carga el formulario para agregar los trabajos
+   */
+  mostrarModal(): void {
+    this.modalVisible = true;
+  }
+
+  enviarFormulario(): void {
+    this.isOkLoading = true;
+    setTimeout(() => {
+      this.modalVisible = false;
+      this.isOkLoading = false;
+    }, 3000);
+  }
+
+  cancelarModal(): void {
+    this.modalVisible = false;
+  }
 
 }
