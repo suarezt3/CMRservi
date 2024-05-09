@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, inject } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgZorroModule } from '../../ng-zorro/ng-zorro.module';
 import { DatosClientesService } from '../../services/datos-clientes.service';
@@ -12,6 +12,7 @@ import { DatosClientesService } from '../../services/datos-clientes.service';
 })
 export class FormularioNuevoTrabajoComponent implements OnInit {
 
+  public modalVisible : boolean   = false
   public formNuevoTrabajo!: FormGroup;
   public tiposTrabajos!: any[];
   public date = null;
@@ -40,13 +41,9 @@ export class FormularioNuevoTrabajoComponent implements OnInit {
 
   }
 
-  onChange(result: Date): void {
-    console.log('onChange: ', result);
-  }
-
   envioFormulario() {
-    console.log("Enviando el formulario");
-
+    console.log("Desde el formulario", this.formNuevoTrabajo.value);
+    this.modalVisible = false;
   }
 
 }

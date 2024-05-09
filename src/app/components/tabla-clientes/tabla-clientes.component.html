@@ -72,8 +72,8 @@ nzTableLayout="fixed"
 [(nzVisible)]="modalVisible"
 nzTitle="Ingresa los datos del trabajo realizado"
 (nzOnCancel)="cancelarModal()"
-(nzOnOk)="enviarFormulario()"
 [nzOkLoading]="isOkLoading"
+[nzFooter]="null"
 >
 <app-formulario-nuevo-trabajo *nzModalContent/>
 </nz-modal>

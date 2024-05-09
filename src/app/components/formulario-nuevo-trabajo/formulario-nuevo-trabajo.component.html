@@ -15,7 +15,7 @@
       <div class="input order">
         <label for="">Nº de orden</label>
         <div>
-          <input nz-input placeholder="0000" type="number" />
+          <input nz-input formControlName="numeroOrden" placeholder="0000" type="number" />
         </div>
       </div>
     </section>
@@ -23,7 +23,7 @@
     <div>
       <label for="">Costo</label>
       <div>
-        <input nz-input placeholder="0000" type="number" />
+        <input nz-input formControlName="precio" placeholder="0000" type="number" />
       </div>
     </div>
 
@@ -31,13 +31,13 @@
       <div>
         <label for="">Fecha</label>
         <div>
-          <nz-date-picker [(ngModel)]="date" (ngModelChange)="onChange($event)"></nz-date-picker>
+          <nz-date-picker formControlName="fecha"></nz-date-picker>
         </div>
       </div>
       <div >
         <label for="">Proxima fecha</label>
         <div>
-          <nz-date-picker [(ngModel)]="date" (ngModelChange)="onChange($event)"></nz-date-picker>
+          <nz-date-picker formControlName="proximaFecha"></nz-date-picker>
         </div>
       </div>
     </section>
@@ -46,8 +46,10 @@
     <div>
       <label for="">Escriba el trabajo realizado</label>
       <div>
-        <textarea nz-input rows="4"></textarea>
+        <textarea nz-input formControlName="descripcion" rows="4"></textarea>
       </div>
     </div>
+
+    <button nz-button (click)="envioFormulario()" >Envio formulario</button>
   </form>
 </div>
