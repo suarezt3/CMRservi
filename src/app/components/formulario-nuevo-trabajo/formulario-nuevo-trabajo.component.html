@@ -1,13 +1,52 @@
 <div>
   <form [formGroup]="formNuevoTrabajo" (ngSubmit)="envioFormulario()">
+
+    <section class="section-one" >
+      <div class="input jobs">
+        <label for="">Tipo de trabajo realizado</label>
+        <div>
+          <nz-select class="input" formControlName="tipoTrabajo" nzPlaceHolder="Seleccione una opcion">
+            @for (item of tiposTrabajos; track item?.id) {
+            <nz-option [nzValue]="item?.id" [nzLabel]="item?.nombre" ></nz-option>
+            }
+          </nz-select>
+        </div>
+      </div>
+      <div class="input order">
+        <label for="">Nº de orden</label>
+        <div>
+          <input nz-input placeholder="0000" type="number" />
+        </div>
+      </div>
+    </section>
+
     <div>
-      <label for="">Tipo de trabajo realizado</label>
+      <label for="">Costo</label>
       <div>
-        <nz-select class="select" formControlName="tipoTrabajo" nzPlaceHolder="Seleccione una opcion">
-          @for (item of tiposTrabajos; track item?.id) {
-          <nz-option [nzValue]="item?.id" [nzLabel]="item?.nombre" ></nz-option>
-          }
-        </nz-select>
+        <input nz-input placeholder="0000" type="number" />
+      </div>
+    </div>
+
+    <section class="section-two">
+      <div>
+        <label for="">Fecha</label>
+        <div>
+          <nz-date-picker [(ngModel)]="date" (ngModelChange)="onChange($event)"></nz-date-picker>
+        </div>
+      </div>
+      <div >
+        <label for="">Proxima fecha</label>
+        <div>
+          <nz-date-picker [(ngModel)]="date" (ngModelChange)="onChange($event)"></nz-date-picker>
+        </div>
+      </div>
+    </section>
+
+
+    <div>
+      <label for="">Escriba el trabajo realizado</label>
+      <div>
+        <textarea nz-input rows="4"></textarea>
       </div>
     </div>
   </form>

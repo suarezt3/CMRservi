@@ -1,0 +1,22 @@
+:host() {
+  font-family: "Nunito", sans-serif;
+}
+
+.section-one {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
+}
+
+.section-two {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.input {
+  width: 90%;
+}
+
+

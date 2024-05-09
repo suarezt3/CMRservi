@@ -15,6 +15,11 @@ import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
 import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import { NzGridModule } from 'ng-zorro-antd/grid';
+
+
+
 
 
 
@@ -38,7 +43,10 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
     NzToolTipModule,
     NzSelectModule,
     NzAlertModule,
-    NzModalModule
+    NzModalModule,
+    NzDatePickerModule,
+    NzGridModule,
+
   ],
   exports: [
     NzTableModule,
@@ -54,7 +62,9 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
     NzToolTipModule,
     NzSelectModule,
     NzAlertModule,
-    NzModalModule
+    NzModalModule,
+    NzDatePickerModule,
+    NzGridModule
   ]
 })
 export class NgZorroModule { }
