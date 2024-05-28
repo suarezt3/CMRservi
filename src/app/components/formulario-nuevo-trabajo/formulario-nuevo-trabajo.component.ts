@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output, inject } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgZorroModule } from '../../ng-zorro/ng-zorro.module';
 import { DatosClientesService } from '../../services/datos-clientes.service';
 
@@ -30,16 +30,34 @@ export class FormularioNuevoTrabajoComponent implements OnInit {
       this.tiposTrabajos = resp
     })
 
+    /**
+     * Formulario para crear los trabajos
+     */
     this.formNuevoTrabajo = this.fb.group({
-     tipoTrabajo : [],
-     fecha       : [],
-     proximaFecha: [],
-     numeroOrden : [],
-     precio      : [],
-     descripcion : []
+     tipoTrabajo : ['', [Validators.required]],
+     fecha       : ['', [Validators.required]],
+     proximaFecha: [''],
+     numeroOrden : ['', [Validators.required, ]],
+     precio      : ['', [Validators.required, ]],
+     descripcion : ['', [Validators.required]],
+     user        : [''],
+     vehicle     : [''],
+     vehicleBrand: [''],
+     plate       : [''],
+     name        : ['']
     })
-
   }
+
+  /**
+   *
+   * @param field valida los campos del formulario
+   * @returns
+   */
+  invalidField( field: string ) {
+    return this.formNuevoTrabajo.get(field)?.invalid
+            && this.formNuevoTrabajo.get(field)?.touched;
+  }
+
 
   envioFormulario() {
     console.log("Desde el formulario", this.formNuevoTrabajo.value);
