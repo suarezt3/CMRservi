@@ -11,12 +11,34 @@
             }
           </nz-select>
         </div>
+        @if (invalidField('tipoTrabajo')) {
+          <div class="error" >
+            @if (formNuevoTrabajo.controls?.['tipoTrabajo']?.errors?.['required']) {
+              <span > Campo obligatorio </span>
+            }
+          </div>
+        }
+
       </div>
       <div class="input order">
         <label for="">Nº de orden</label>
         <div>
-          <input nz-input formControlName="numeroOrden" placeholder="0000" type="number" />
+          <input
+            nz-input
+            formControlName="numeroOrden"
+            placeholder="0000"
+            type="number"
+            maxlength="12"
+            minlength="4"
+            />
         </div>
+        @if (invalidField('numeroOrden')) {
+          <div class="error" >
+            @if (formNuevoTrabajo.controls?.['numeroOrden']?.errors?.['required']) {
+              <span > Campo obligatorio </span>
+            }
+          </div>
+        }
       </div>
     </section>
 
@@ -25,6 +47,13 @@
       <div>
         <input nz-input formControlName="precio" placeholder="0000" type="number" />
       </div>
+      @if (invalidField('precio')) {
+        <div class="error" >
+          @if (formNuevoTrabajo.controls?.['precio']?.errors?.['required']) {
+            <span > Campo obligatorio </span>
+          }
+        </div>
+      }
     </div>
 
     <section class="section-two">
@@ -33,6 +62,13 @@
         <div>
           <nz-date-picker formControlName="fecha"></nz-date-picker>
         </div>
+        @if (invalidField('fecha')) {
+          <div class="error" >
+            @if (formNuevoTrabajo.controls?.['fecha']?.errors?.['required']) {
+              <span > Campo obligatorio </span>
+            }
+          </div>
+        }
       </div>
       <div >
         <label for="">Proxima fecha</label>
@@ -48,6 +84,13 @@
       <div>
         <textarea nz-input formControlName="descripcion" rows="4"></textarea>
       </div>
+      @if (invalidField('descripcion')) {
+        <div class="error" >
+          @if (formNuevoTrabajo.controls?.['descripcion']?.errors?.['required']) {
+            <span > Campo obligatorio </span>
+          }
+        </div>
+      }
     </div>
     <div class="div-btn">
       <button class="btn" nz-button nzType="primary" (click)="envioFormulario()" >Envio formulario</button>

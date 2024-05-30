@@ -16,6 +16,7 @@ export class FormularioNuevoTrabajoComponent implements OnInit {
   public formNuevoTrabajo!: FormGroup;
   public tiposTrabajos!: any[];
   public date = null;
+  public limitNumber: string  = "^([0-9]+)$"
 
   /**
    * Injecctions
@@ -37,8 +38,8 @@ export class FormularioNuevoTrabajoComponent implements OnInit {
      tipoTrabajo : ['', [Validators.required]],
      fecha       : ['', [Validators.required]],
      proximaFecha: [''],
-     numeroOrden : ['', [Validators.required, ]],
-     precio      : ['', [Validators.required, ]],
+     numeroOrden : ['', [Validators.required]],
+     precio      : ['', [Validators.required]],
      descripcion : ['', [Validators.required]],
      user        : [''],
      vehicle     : [''],
