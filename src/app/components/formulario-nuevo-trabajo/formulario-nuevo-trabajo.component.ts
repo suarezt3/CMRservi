@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output, inject } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgZorroModule } from '../../ng-zorro/ng-zorro.module';
 import { DatosClientesService } from '../../services/datos-clientes.service';
 
@@ -59,8 +59,18 @@ export class FormularioNuevoTrabajoComponent implements OnInit {
             && this.formNuevoTrabajo.get(field)?.touched;
   }
 
+  /**
+   *
+   * @param control Se validad si el control del formulario es requerido
+   * @returns
+   */
+  hasRequiredError(control: any): boolean {
+    return control.errors?.["required"];
+  }
+
 
   envioFormulario() {
+    this.formNuevoTrabajo.markAllAsTouched()
     console.log("Desde el formulario", this.formNuevoTrabajo.value);
     this.modalVisible = false;
   }

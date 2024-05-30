@@ -11,11 +11,9 @@
             }
           </nz-select>
         </div>
-        @if (invalidField('tipoTrabajo')) {
+        @if (invalidField('tipoTrabajo') && hasRequiredError(formNuevoTrabajo?.controls?.['tipoTrabajo'])) {
           <div class="error" >
-            @if (formNuevoTrabajo.controls?.['tipoTrabajo']?.errors?.['required']) {
               <span > Campo obligatorio </span>
-            }
           </div>
         }
 
@@ -32,11 +30,9 @@
             minlength="4"
             />
         </div>
-        @if (invalidField('numeroOrden')) {
+        @if (invalidField('numeroOrden') && hasRequiredError(formNuevoTrabajo?.controls?.['numeroOrden'])) {
           <div class="error" >
-            @if (formNuevoTrabajo.controls?.['numeroOrden']?.errors?.['required']) {
-              <span > Campo obligatorio </span>
-            }
+            <span > Campo obligatorio </span>
           </div>
         }
       </div>
@@ -47,11 +43,9 @@
       <div>
         <input nz-input formControlName="precio" placeholder="0000" type="number" />
       </div>
-      @if (invalidField('precio')) {
+      @if (invalidField('precio') && hasRequiredError(formNuevoTrabajo?.controls?.['precio'])) {
         <div class="error" >
-          @if (formNuevoTrabajo.controls?.['precio']?.errors?.['required']) {
             <span > Campo obligatorio </span>
-          }
         </div>
       }
     </div>
@@ -62,11 +56,9 @@
         <div>
           <nz-date-picker formControlName="fecha"></nz-date-picker>
         </div>
-        @if (invalidField('fecha')) {
+        @if (invalidField('fecha') && hasRequiredError(formNuevoTrabajo?.controls?.['fecha'])) {
           <div class="error" >
-            @if (formNuevoTrabajo.controls?.['fecha']?.errors?.['required']) {
-              <span > Campo obligatorio </span>
-            }
+            <span > Campo obligatorio </span>
           </div>
         }
       </div>
@@ -84,11 +76,9 @@
       <div>
         <textarea nz-input formControlName="descripcion" rows="4"></textarea>
       </div>
-      @if (invalidField('descripcion')) {
+      @if (invalidField('descripcion') && hasRequiredError(formNuevoTrabajo?.controls?.['descripcion'])) {
         <div class="error" >
-          @if (formNuevoTrabajo.controls?.['descripcion']?.errors?.['required']) {
-            <span > Campo obligatorio </span>
-          }
+          <span > Campo obligatorio </span>
         </div>
       }
     </div>
