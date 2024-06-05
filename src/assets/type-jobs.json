@@ -1,10 +1,10 @@
 [
-  { "id": "Matenimiento",         "nombre": "Matenimiento" },
-  { "id": "Cambio de filtro",     "nombre": "Cambio de filtro" },
-  { "id": "Cambio de evaporador", "nombre": "Cambio de evaporador" },
-  { "id": "Cambio de condensador","nombre": "Cambio de condensador" },
-  { "id": "Cambio de compresor",  "nombre": "Cambio de compresor" },
-  { "id": "Nivelacion",           "nombre": "Nivelacion" },
-  { "id": "Carga",                "nombre": "Carga" },
-  { "id": "Otros trabajos",       "nombre": "Otros trabajos"}
+  { "id": "Mantenimiento",         "nombre": "Mantenimiento" },
+  { "id": "Cambio de filtro",      "nombre": "Cambio de filtro" },
+  { "id": "Cambio de evaporador",  "nombre": "Cambio de evaporador" },
+  { "id": "Cambio de condensador", "nombre": "Cambio de condensador" },
+  { "id": "Cambio de compresor",   "nombre": "Cambio de compresor" },
+  { "id": "Nivelacion",            "nombre": "Nivelacion" },
+  { "id": "Carga",                 "nombre": "Carga" },
+  { "id": "Otros trabajos",        "nombre": "Otros trabajos"}
 ]
