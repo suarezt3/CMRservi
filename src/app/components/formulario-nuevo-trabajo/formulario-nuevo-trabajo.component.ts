@@ -1,7 +1,8 @@
-import { Component, EventEmitter, OnInit, Output, inject } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgZorroModule } from '../../ng-zorro/ng-zorro.module';
 import { DatosClientesService } from '../../services/datos-clientes.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-formulario-nuevo-trabajo',
@@ -12,40 +13,61 @@ import { DatosClientesService } from '../../services/datos-clientes.service';
 })
 export class FormularioNuevoTrabajoComponent implements OnInit {
 
+  @Input() cliente: any = "" || undefined
+
   public modalVisible : boolean   = false
   public formNuevoTrabajo!: FormGroup;
   public tiposTrabajos!: any[];
   public date = null;
-  public limitNumber: string  = "^([0-9]+)$"
+  public limitNumber: string  = "^([0-9]+)$";
+  public id = "";
+  public vehicle!: string | null;
+  public vehicleBrand!: string | null;
+  public plate!: string | null;
+  public numberDocument!: number | null;
+  public name!: string | null;
 
   /**
    * Injecctions
    */
   private fb = inject(FormBuilder);
   private dataService  = inject(DatosClientesService);
+  private activatedRoute = inject(ActivatedRoute)
 
 
   ngOnInit(): void {
 
     this.dataService.getTypeJobs().subscribe((resp) => {
       this.tiposTrabajos = resp
-    })
+    });
+
+    setTimeout(() => {
+      console.log("DATOS CLIENTE", this.cliente);
+       this.vehicle = this.cliente.vehicle
+       this.vehicleBrand = this.cliente.vehicleBrand
+       this.plate = this.cliente.plate,
+       this.numberDocument = this.cliente.numberDocument
+       this.name = this.cliente.name
+    }, 1000);
+
+
+
 
     /**
      * Formulario para crear los trabajos
      */
     this.formNuevoTrabajo = this.fb.group({
-     tipoTrabajo : ['', [Validators.required]],
-     fecha       : ['', [Validators.required]],
-     proximaFecha: [''],
-     numeroOrden : ['', [Validators.required]],
-     precio      : ['', [Validators.required]],
-     descripcion : ['', [Validators.required]],
-     user        : [''],
-     vehicle     : [''],
-     vehicleBrand: [''],
-     plate       : [''],
-     name        : ['']
+     tipoTrabajo   : ['', [Validators.required]],
+     fecha         : ['', [Validators.required]],
+     proximaFecha  : [''],
+     numeroOrden   : ['', [Validators.required]],
+     precio        : ['', [Validators.required]],
+     descripcion   : ['', [Validators.required]],
+     numberDocument: [''],
+     vehicle       : [''],
+     vehicleBrand  : [''],
+     plate         : [''],
+     name          : ['']
     })
   }
 
@@ -70,8 +92,15 @@ export class FormularioNuevoTrabajoComponent implements OnInit {
 
 
   envioFormulario() {
-    this.formNuevoTrabajo.markAllAsTouched()
-    console.log("Desde el formulario", this.formNuevoTrabajo.value);
+     this.formNuevoTrabajo.get('vehicle')?.setValue(this.vehicle)
+     this.formNuevoTrabajo.get('vehicleBrand')?.setValue(this.vehicleBrand)
+     this.formNuevoTrabajo.get('plate')?.setValue(this.plate)
+     this.formNuevoTrabajo.get('numberDocument')?.setValue(this.numberDocument)
+     this.formNuevoTrabajo.get('name')?.setValue(this.name)
+     this.formNuevoTrabajo.markAllAsTouched()
+     setTimeout(() => {
+       console.log("Desde el formulario", this.formNuevoTrabajo.value);
+     }, 3000);
     this.modalVisible = false;
   }
 

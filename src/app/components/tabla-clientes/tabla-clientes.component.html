@@ -45,7 +45,7 @@ nzTableLayout="fixed"
         <td>{{ data?.vehicleBrand }}</td>
         <td>
         <button (click)="open(data?.plate)" class="btn" nz-button nzType="primary" > Ver mas</button>
-        <button class="btn" nz-button nzType="default" (click)="mostrarModal()" > Agregar trabajo</button>
+        <button class="btn" nz-button nzType="default" (click)="mostrarModal(data?.plate)" > Agregar trabajo</button>
         </td>
       </tr>
     }
@@ -75,7 +75,7 @@ nzTitle="Ingresa los datos del trabajo realizado"
 [nzOkLoading]="isOkLoading"
 [nzFooter]="null"
 >
-<app-formulario-nuevo-trabajo *nzModalContent/>
+<app-formulario-nuevo-trabajo [cliente]="cliente[0]" *nzModalContent/>
 </nz-modal>
 
 

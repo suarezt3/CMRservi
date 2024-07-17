@@ -74,7 +74,11 @@ export class TablaClientesComponent implements OnInit {
   /**
    * Modal que carga el formulario para agregar los trabajos
    */
-  mostrarModal(): void {
+  mostrarModal(placa: any): void {
+    this.DatosClientesService.getClientPlate(placa).subscribe((resp: any) => {
+      this.cliente = resp
+      console.log("CLIENTE", this.cliente);
+    })
     this.modalVisible = true;
   }
 
