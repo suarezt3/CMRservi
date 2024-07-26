@@ -105,6 +105,21 @@ getClientPlate(placa: string) {
 
 
   /**
+     *
+     * @param body Crear un nuevo trabajo
+     * @returns
+     */
+  createJobs(body: {}): Observable<any> {
+    let headers = new HttpHeaders({
+      'apikey'       : environment.supabaseKey,
+      'Authorization': environment.authorization,
+      'Content-Type' : 'application/json',
+     })
+     return this.http.post<any>(`${this.url}/jobs`, body, {headers})
+  }
+
+
+  /**
  *
  * @returns Obtener las marcas de vehiculos
  */

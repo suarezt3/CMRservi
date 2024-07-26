@@ -1,17 +1,17 @@
 <div>
-  <form [formGroup]="formNuevoTrabajo" (ngSubmit)="envioFormulario()">
+  <form [formGroup]="formNuevoTrabajo">
 
     <section class="section-one" >
       <div class="input jobs">
         <label for="">Tipo de trabajo realizado</label>
         <div>
-          <nz-select class="input" formControlName="tipoTrabajo" nzPlaceHolder="Seleccione una opcion">
+          <nz-select class="input" formControlName="typeJobs" nzPlaceHolder="Seleccione una opcion">
             @for (item of tiposTrabajos; track item?.id) {
             <nz-option [nzValue]="item?.id" [nzLabel]="item?.nombre" ></nz-option>
             }
           </nz-select>
         </div>
-        @if (invalidField('tipoTrabajo') && hasRequiredError(formNuevoTrabajo?.controls?.['tipoTrabajo'])) {
+        @if (invalidField('typeJobs') && hasRequiredError(formNuevoTrabajo?.controls?.['typeJobs'])) {
           <div class="error" >
               <span > Campo obligatorio </span>
           </div>
@@ -23,14 +23,14 @@
         <div>
           <input
             nz-input
-            formControlName="numeroOrden"
+            formControlName="numberOrder"
             placeholder="0000"
             type="number"
             maxlength="12"
             minlength="4"
             />
         </div>
-        @if (invalidField('numeroOrden') && hasRequiredError(formNuevoTrabajo?.controls?.['numeroOrden'])) {
+        @if (invalidField('numberOrder') && hasRequiredError(formNuevoTrabajo?.controls?.['numberOrder'])) {
           <div class="error" >
             <span > Campo obligatorio </span>
           </div>
@@ -41,9 +41,9 @@
     <div>
       <label for="">Costo</label>
       <div>
-        <input nz-input formControlName="precio" placeholder="0000" type="number" />
+        <input nz-input formControlName="price" placeholder="0000" type="number" />
       </div>
-      @if (invalidField('precio') && hasRequiredError(formNuevoTrabajo?.controls?.['precio'])) {
+      @if (invalidField('price') && hasRequiredError(formNuevoTrabajo?.controls?.['price'])) {
         <div class="error" >
             <span > Campo obligatorio </span>
         </div>
@@ -52,11 +52,11 @@
 
     <section class="section-two">
       <div>
-        <label for="">Fecha</label>
+        <label for="">date</label>
         <div>
-          <nz-date-picker formControlName="fecha"></nz-date-picker>
+          <nz-date-picker formControlName="date"></nz-date-picker>
         </div>
-        @if (invalidField('fecha') && hasRequiredError(formNuevoTrabajo?.controls?.['fecha'])) {
+        @if (invalidField('date') && hasRequiredError(formNuevoTrabajo?.controls?.['date'])) {
           <div class="error" >
             <span > Campo obligatorio </span>
           </div>
@@ -65,7 +65,7 @@
       <div >
         <label for="">Proxima fecha</label>
         <div>
-          <nz-date-picker formControlName="proximaFecha"></nz-date-picker>
+          <nz-date-picker formControlName="nextDate"></nz-date-picker>
         </div>
       </div>
     </section>
@@ -74,9 +74,9 @@
     <div>
       <label for="">Escriba el trabajo realizado</label>
       <div>
-        <textarea nz-input formControlName="descripcion" rows="4"></textarea>
+        <textarea nz-input formControlName="description" rows="4"></textarea>
       </div>
-      @if (invalidField('descripcion') && hasRequiredError(formNuevoTrabajo?.controls?.['descripcion'])) {
+      @if (invalidField('description') && hasRequiredError(formNuevoTrabajo?.controls?.['description'])) {
         <div class="error" >
           <span > Campo obligatorio </span>
         </div>

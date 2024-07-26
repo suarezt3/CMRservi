@@ -57,13 +57,13 @@ export class FormularioNuevoTrabajoComponent implements OnInit {
      * Formulario para crear los trabajos
      */
     this.formNuevoTrabajo = this.fb.group({
-     tipoTrabajo   : ['', [Validators.required]],
-     fecha         : ['', [Validators.required]],
-     proximaFecha  : [''],
-     numeroOrden   : ['', [Validators.required]],
-     precio        : ['', [Validators.required]],
-     descripcion   : ['', [Validators.required]],
-     numberDocument: [''],
+     typeJobs      : ['', [Validators.required]],
+     date          : ['', [Validators.required]],
+     nextDate      : [''],
+     numberOrder   : ['', [Validators.required]],
+     price         : ['', [Validators.required]],
+     description   : ['', [Validators.required]],
+     user          : [''],
      vehicle       : [''],
      vehicleBrand  : [''],
      plate         : [''],
@@ -92,15 +92,18 @@ export class FormularioNuevoTrabajoComponent implements OnInit {
 
 
   envioFormulario() {
+     this.formNuevoTrabajo.markAllAsTouched()
      this.formNuevoTrabajo.get('vehicle')?.setValue(this.vehicle)
      this.formNuevoTrabajo.get('vehicleBrand')?.setValue(this.vehicleBrand)
      this.formNuevoTrabajo.get('plate')?.setValue(this.plate)
-     this.formNuevoTrabajo.get('numberDocument')?.setValue(this.numberDocument)
+     this.formNuevoTrabajo.get('user')?.setValue(this.numberDocument)
      this.formNuevoTrabajo.get('name')?.setValue(this.name)
-     this.formNuevoTrabajo.markAllAsTouched()
-     setTimeout(() => {
+     let dataForm: {}
+     dataForm = this.formNuevoTrabajo.value;
+
+       this.dataService.createJobs(dataForm).subscribe()
        console.log("Desde el formulario", this.formNuevoTrabajo.value);
-     }, 3000);
+
     this.modalVisible = false;
   }
 
