@@ -100,9 +100,9 @@ export class FormularioNuevoTrabajoComponent implements OnInit {
      this.formNuevoTrabajo.get('name')?.setValue(this.name)
      let dataForm: {}
      dataForm = this.formNuevoTrabajo.value;
-
-       this.dataService.createJobs(dataForm).subscribe()
-       console.log("Desde el formulario", this.formNuevoTrabajo.value);
+     this.dataService.createJobs(dataForm).subscribe()
+     this.formNuevoTrabajo.reset()
+     console.log("Desde el formulario", this.formNuevoTrabajo.value);
 
     this.modalVisible = false;
   }
