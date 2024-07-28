@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, 
 import { NgZorroModule } from '../../ng-zorro/ng-zorro.module';
 import { DatosClientesService } from '../../services/datos-clientes.service';
 import { ActivatedRoute } from '@angular/router';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
 
 @Component({
   selector: 'app-formulario-nuevo-trabajo',
@@ -15,23 +16,25 @@ export class FormularioNuevoTrabajoComponent implements OnInit {
 
   @Input() cliente: any = "" || undefined
 
-  public modalVisible : boolean   = false
+  public modalVisible     : boolean   = false
   public formNuevoTrabajo!: FormGroup;
-  public tiposTrabajos!: any[];
+  public tiposTrabajos   !: any[];
   public date = null;
-  public limitNumber: string  = "^([0-9]+)$";
+  public limitNumber      : string  = "^([0-9]+)$";
   public id = "";
-  public vehicle!: string | null;
-  public vehicleBrand!: string | null;
-  public plate!: string | null;
-  public numberDocument!: number | null;
-  public name!: string | null;
+  public vehicle         !: string | null;
+  public vehicleBrand    !: string | null;
+  public plate           !: string | null;
+  public numberDocument  !: number | null;
+  public name            !: string | null;
+  public isLoading        : boolean = false;
 
   /**
    * Injecctions
    */
   private fb = inject(FormBuilder);
   private dataService  = inject(DatosClientesService);
+  private notification = inject(NzNotificationService)
   private activatedRoute = inject(ActivatedRoute)
 
 
@@ -92,19 +95,50 @@ export class FormularioNuevoTrabajoComponent implements OnInit {
 
 
   envioFormulario() {
-     this.formNuevoTrabajo.markAllAsTouched()
-     this.formNuevoTrabajo.get('vehicle')?.setValue(this.vehicle)
-     this.formNuevoTrabajo.get('vehicleBrand')?.setValue(this.vehicleBrand)
-     this.formNuevoTrabajo.get('plate')?.setValue(this.plate)
-     this.formNuevoTrabajo.get('user')?.setValue(this.numberDocument)
-     this.formNuevoTrabajo.get('name')?.setValue(this.name)
-     let dataForm: {}
-     dataForm = this.formNuevoTrabajo.value;
-     this.dataService.createJobs(dataForm).subscribe()
-     this.formNuevoTrabajo.reset()
-     console.log("Desde el formulario", this.formNuevoTrabajo.value);
+    this.isLoading = true
+    setTimeout(() => {
+      this.formNuevoTrabajo.markAllAsTouched()
+      if (this.formNuevoTrabajo.invalid) {
+       let status = "error"
+       this.notificationError(status)
+      }else {
+        this.formNuevoTrabajo.get('vehicle')?.setValue(this.vehicle)
+        this.formNuevoTrabajo.get('vehicleBrand')?.setValue(this.vehicleBrand)
+        this.formNuevoTrabajo.get('plate')?.setValue(this.plate)
+        this.formNuevoTrabajo.get('user')?.setValue(this.numberDocument)
+        this.formNuevoTrabajo.get('name')?.setValue(this.name)
+        let dataForm: {}
+        dataForm = this.formNuevoTrabajo.value;
+        this.dataService.createJobs(dataForm).subscribe()
+        let status = "success";
+        this.notificationSuccess(status)
+        this.formNuevoTrabajo.reset()
+        console.log("Desde el formulario", this.formNuevoTrabajo.value);
+      }
 
-    this.modalVisible = false;
+      this.isLoading = false
+    }, 2000);
+
   }
 
+  /**
+  * La función `notificationError` crea una notificación con un mensaje de error.
+  * @param {string} type - El tipo de notificación a mostrar. Puede ser 'success', 'información',
+  * 'advertencia' o 'error'.
+  */
+    notificationError(type: string): void {
+      this.notification.create(
+        type,
+        'Error',
+        'No se pudo enviar los datos 😧'
+      );
+    }
+
+    notificationSuccess(type: string): void {
+      this.notification.create(
+        type,
+        'Excelente',
+        'Trabajo creado con exito 😀'
+      );
+    }
 }

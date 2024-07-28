@@ -39,7 +39,8 @@
     </section>
 
     <div>
-      <label for="">Costo</label>
+      <span nz-tooltip nzTooltipTitle="Ingresa el numero sin puntos ni comas" nz-icon nzType="info-circle" nzTheme="twotone" nzTooltipColor="blue"></span>
+      <label for=""> Costo</label>
       <div>
         <input nz-input formControlName="price" placeholder="0000" type="number" />
       </div>
@@ -83,7 +84,7 @@
       }
     </div>
     <div class="div-btn">
-      <button class="btn" nz-button nzType="primary" (click)="envioFormulario()" >Envio formulario</button>
+      <button class="btn" nz-button nzType="primary" (click)="envioFormulario()" [disabled]="formNuevoTrabajo.invalid"  [nzLoading]="isLoading" >Envio formulario</button>
     </div>
   </form>
 </div>

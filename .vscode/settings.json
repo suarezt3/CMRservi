@@ -11,5 +11,6 @@
         "titleBar.border": "#d1e2fb",
         "titleBar.inactiveBackground": "#d1e2fb99",
         "titleBar.inactiveForeground": "#00000099"
-    }
+    },
+    "editor.fontFamily": "'Cascadia Code', 'Courier New', monospace"
 }
