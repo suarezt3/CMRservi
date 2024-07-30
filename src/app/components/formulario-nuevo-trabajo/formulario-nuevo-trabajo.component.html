@@ -63,12 +63,16 @@
           </div>
         }
       </div>
-      <div >
-        <label for="">Proxima fecha</label>
+      @if (formNuevoTrabajo.controls?.['typeJobs']?.value != 'Otros trabajos') {
         <div>
-          <nz-date-picker formControlName="nextDate"></nz-date-picker>
+          <span nz-tooltip nzTooltipTitle="Esta es la fecha para el proximo trabajo" nz-icon nzType="info-circle" nzTheme="twotone" nzTooltipColor="blue"></span>
+          <label for=""> Proxima fecha</label>
+          <div>
+            <nz-date-picker formControlName="nextDate"></nz-date-picker>
+          </div>
         </div>
-      </div>
+      }
+
     </section>
 
 
