@@ -6,7 +6,7 @@
       <h3>Historial de trabajos realizados</h3>
     </div>
   <div>
-    <button nz-button nzType="primary" nzSize="small"> <span nz-icon nzType="form" nzTheme="outline"></span>  Nuevo trabajo</button>
+    <button nz-button nzType="primary" nzSize="small" (click)="mostrarModal(cliente.plate)" > <span nz-icon nzType="form" nzTheme="outline"></span>  Nuevo trabajo</button>
   </div>
   </section>
 <nz-tabset>
@@ -74,4 +74,13 @@
 }
 
 
+<nz-modal
+[(nzVisible)]="modalVisible"
+nzTitle="Ingresa los datos del trabajo realizado"
+(nzOnCancel)="cancelarModal()"
+[nzOkLoading]="isOkLoading"
+[nzFooter]="null"
+>
+<app-formulario-nuevo-trabajo [cliente]="cliente[0]" *nzModalContent/>
+</nz-modal>
 
