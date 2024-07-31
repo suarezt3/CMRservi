@@ -34,8 +34,8 @@ export class FormularioNuevoTrabajoComponent implements OnInit {
    */
   private fb = inject(FormBuilder);
   private dataService  = inject(DatosClientesService);
-  private notification = inject(NzNotificationService)
-  private activatedRoute = inject(ActivatedRoute)
+  private notification = inject(NzNotificationService);
+  private activatedRoute = inject(ActivatedRoute);
 
 
   ngOnInit(): void {
@@ -118,6 +118,7 @@ export class FormularioNuevoTrabajoComponent implements OnInit {
 
       this.isLoading = false
     }, 2000);
+
 
   }
 

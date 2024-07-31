@@ -63,7 +63,7 @@
       <p>{{item?.description}}</p>
     </div>
     <div class="btn-delete-job">
-      <button nz-button  nzSize="small" nzDanger="default"> <span nz-icon nzType="delete" nzTheme="outline"></span>Eliminar este trabajo</button>
+      <button nz-button  nzSize="small" nzDanger="default" (click)="deleteOrder(item?.numberOrder)"> <span nz-icon nzType="delete" nzTheme="outline"></span>Eliminar este trabajo</button>
     </div>
   </nz-tab>
   }

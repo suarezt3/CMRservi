@@ -118,6 +118,17 @@ getClientPlate(placa: string) {
      return this.http.post<any>(`${this.url}/jobs`, body, {headers})
   }
 
+  /**
+ *
+ * @returns Para eliminar un trabajo
+ */
+deleteJobs(order: number) {
+  let headers = new HttpHeaders({
+    'apikey'       : environment.supabaseKey,
+    'Authorization': environment.authorization
+  })
+   return this.http.delete<any>(`${this.url}/jobs?numberOrder=eq.${order}`, {headers}).pipe()
+}
 
   /**
  *

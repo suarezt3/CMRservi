@@ -3,6 +3,7 @@ import { NgZorroModule } from '../../ng-zorro/ng-zorro.module';
 import { CommonModule } from '@angular/common';
 import { FormularioNuevoTrabajoComponent } from '../formulario-nuevo-trabajo/formulario-nuevo-trabajo.component';
 import { DatosClientesService } from '../../services/datos-clientes.service';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
 
 @Component({
   selector: 'app-historial-trabajos-cliente',
@@ -21,16 +22,11 @@ export class HistorialTrabajosClienteComponent implements OnInit {
   public visible      : boolean   = false
 
   private DatosClientesService = inject( DatosClientesService );
+  private notification = inject(NzNotificationService);
 
   ngOnInit(): void {
 
-    setTimeout(() => {
-      console.log("CLIENTE", this.cliente);
-    }, 1000);
   }
-
-
-
 
     /**
     * Modal que carga el formulario para agregar los trabajos
@@ -43,6 +39,23 @@ export class HistorialTrabajosClienteComponent implements OnInit {
      this.modalVisible = true;
    }
 
+
+   deleteOrder(order: number) {
+    this.DatosClientesService.deleteJobs(order).subscribe()
+    let status = "success";
+    this.notificationSuccess(status)
+     setTimeout(() => {
+      window.location.reload()
+    }, 500);
+  }
+
+  notificationSuccess(type: string): void {
+    this.notification.create(
+      type,
+      'Excelente',
+      'Trabajo eliminado con exito 😀'
+    );
+  }
 
   cancelarModal(): void {
     this.modalVisible = false;
