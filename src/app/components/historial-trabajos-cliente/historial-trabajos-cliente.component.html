@@ -63,7 +63,23 @@
       <p>{{item?.description}}</p>
     </div>
     <div class="btn-delete-job">
-      <button nz-button  nzSize="small" nzDanger="default" (click)="deleteOrder(item?.numberOrder)"> <span nz-icon nzType="delete" nzTheme="outline"></span>Eliminar este trabajo</button>
+      <button
+        nz-popconfirm
+        nzPopconfirmTitle="Estas seguro que deseas eliminar este trabajo?"
+        nzPopconfirmPlacement="bottom"
+        nz-button
+        nzSize="small"
+        nzDanger="default"
+        [nzOkDanger]="true"
+        (nzOnConfirm)="deleteOrder(item?.numberOrder)"
+        (nzOnCancel)="cancel()"
+        ><span
+        nz-icon
+        nzType="delete"
+        nzTheme="outline">
+      </span>
+      Eliminar este trabajo
+    </button>
     </div>
   </nz-tab>
   }

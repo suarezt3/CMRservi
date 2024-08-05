@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormularioNuevoTrabajoComponent } from '../formulario-nuevo-trabajo/formulario-nuevo-trabajo.component';
 import { DatosClientesService } from '../../services/datos-clientes.service';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-historial-trabajos-cliente',
@@ -23,6 +24,7 @@ export class HistorialTrabajosClienteComponent implements OnInit {
 
   private DatosClientesService = inject( DatosClientesService );
   private notification = inject(NzNotificationService);
+  private messageService = inject(NzMessageService);
 
   ngOnInit(): void {
 
@@ -46,7 +48,11 @@ export class HistorialTrabajosClienteComponent implements OnInit {
     this.notificationSuccess(status)
      setTimeout(() => {
       window.location.reload()
-    }, 500);
+    }, 800);
+  }
+
+  cancel(): void {
+    this.messageService.info('Cancelado');
   }
 
   notificationSuccess(type: string): void {

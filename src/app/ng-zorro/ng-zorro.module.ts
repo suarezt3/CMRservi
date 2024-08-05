@@ -18,13 +18,7 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzNotificationModule } from 'ng-zorro-antd/notification';
-
-
-
-
-
-
-
+import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 
 
 
@@ -49,7 +43,8 @@ import { NzNotificationModule } from 'ng-zorro-antd/notification';
     NzModalModule,
     NzDatePickerModule,
     NzGridModule,
-    NzNotificationModule
+    NzNotificationModule,
+    NzPopconfirmModule
 
   ],
   exports: [
@@ -69,7 +64,8 @@ import { NzNotificationModule } from 'ng-zorro-antd/notification';
     NzModalModule,
     NzDatePickerModule,
     NzGridModule,
-    NzNotificationModule
+    NzNotificationModule,
+    NzPopconfirmModule
   ]
 })
 export class NgZorroModule { }
