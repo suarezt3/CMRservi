@@ -55,3 +55,12 @@
   margin-top: -10px;
   font-size: 0.7rem;
 }
+
+.table-head {
+display: flex;
+justify-content: space-between;
+}
+
+.search-box {
+
+}

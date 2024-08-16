@@ -1,4 +1,16 @@
-<h2>Total registros encontrados: <span class="total">{{datosClientes.length}}</span> </h2>
+<section class="table-head">
+  <div>
+    <h2>Total registros encontrados: <span class="total">{{datosClientes.length}}</span> </h2>
+  </div>
+  <div class="search-box">
+    <nz-input-group nzSearch nzSize="large" [nzAddOnAfter]="suffixButton">
+      <input type="text" nz-input placeholder="Ingresa una placa" />
+    </nz-input-group>
+    <ng-template #suffixButton>
+      <button nz-button nzType="primary" nzSize="large" nzSearch>Buscar</button>
+    </ng-template>
+  </div>
+</section>
 <hr>
 <nz-table
 #nzTable
