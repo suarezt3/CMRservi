@@ -41,6 +41,7 @@ export class TablaClientesComponent implements OnInit {
   public datosClientes: Cliente[] = [] || undefined;
   public cliente      : Cliente[] = [] || undefined;
   public trabajos     : Trabajo[] = [] || undefined;
+  private debounceTimer?: NodeJS.Timeout;
 
 
   private DatosClientesService = inject( DatosClientesService );
@@ -54,6 +55,16 @@ export class TablaClientesComponent implements OnInit {
     });
   }
 
+  onQueryChanged(query: string = '') {
+    if (this.debounceTimer) clearTimeout(this.debounceTimer);
+    this.debounceTimer = setTimeout(() => {
+      console.log("Probando Query", query);
+      this.DatosClientesService.getClientPlate(query).subscribe((resp: any) => {
+        this.cliente = resp
+        console.log("CLIENTE", this.cliente);
+      })
+    },3000)
+  }
 
  open(placa: any) {
   this.DatosClientesService.getJobsClients(placa).subscribe((trabajo: any) => {
