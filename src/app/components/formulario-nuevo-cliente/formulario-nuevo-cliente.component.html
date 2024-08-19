@@ -107,6 +107,7 @@
         nz-button
         nzType="primary"
         nzBlock
+        [disabled]="formNuevoCliente.invalid"
         >
         {{this.id ? "Editar": "Enviar"}}
       </button>
