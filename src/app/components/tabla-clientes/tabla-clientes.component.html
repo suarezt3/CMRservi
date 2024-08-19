@@ -3,11 +3,16 @@
     <h2>Total registros encontrados: <span class="total">{{datosClientes.length}}</span> </h2>
   </div>
   <div class="search-box">
-    <nz-input-group nzSearch nzSize="large" [nzAddOnAfter]="suffixButton">
+    <nz-input-group nzSearch nzSize="large" [nzAddOnBefore]="suffixButtonBefore" [nzAddOnAfter]="suffixButtonAfter">
       <input #Query (keyup)="onQueryChanged(Query.value)" type="text" nz-input placeholder="Ingresa una placa" />
     </nz-input-group>
-    <ng-template #suffixButton>
-      <button nz-button nzType="primary" nzSize="large" nzSearch>Buscar</button>
+
+
+    <ng-template #suffixButtonBefore>
+      <button nz-button nzType="primary"  nzSize="default" nzSearch (click)="searchAll()">Ver todos</button>
+    </ng-template>
+    <ng-template #suffixButtonAfter>
+      <button nz-button nzType="primary"  nzSize="default" nzSearch [nzLoading]="isLoading">{{ isLoading ? 'Buscando...' : 'Buscar' }}</button>
     </ng-template>
   </div>
 </section>

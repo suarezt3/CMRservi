@@ -35,12 +35,14 @@ import { FormularioNuevoTrabajoComponent } from '../formulario-nuevo-trabajo/for
 })
 export class TablaClientesComponent implements OnInit {
 
-  public modalVisible : boolean   = false
-  public isOkLoading  : boolean   = false;
-  public visible      : boolean   = false
-  public datosClientes: Cliente[] = [] || undefined;
-  public cliente      : Cliente[] = [] || undefined;
-  public trabajos     : Trabajo[] = [] || undefined;
+  public modalVisible   : boolean   = false
+  public isOkLoading    : boolean   = false;
+  public visible        : boolean   = false
+  public datosClientes  : Cliente[] = [] || undefined;
+  public cliente        : Cliente[] = [] || undefined;
+  public trabajos       : Trabajo[] = [] || undefined;
+  public isLoading      : boolean   = false;
+  public query          : string    = ""
   private debounceTimer?: NodeJS.Timeout;
 
 
@@ -55,15 +57,22 @@ export class TablaClientesComponent implements OnInit {
     });
   }
 
+  searchAll() {
+    this.DatosClientesService.getClientes().subscribe((resp: any) => {
+      this.datosClientes = resp
+      this.query = ""
+    });
+  }
+
   onQueryChanged(query: string = '') {
+    this.isLoading = true
     if (this.debounceTimer) clearTimeout(this.debounceTimer);
     this.debounceTimer = setTimeout(() => {
-      console.log("Probando Query", query);
-      this.DatosClientesService.getClientPlate(query).subscribe((resp: any) => {
-        this.cliente = resp
-        console.log("CLIENTE", this.cliente);
+      this.DatosClientesService.getClientPlate(query.toUpperCase()).subscribe((resp: any) => {
+          this.datosClientes = resp
+          this.isLoading = false
       })
-    },3000)
+    },800)
   }
 
  open(placa: any) {
