@@ -61,6 +61,6 @@ display: flex;
 justify-content: space-between;
 }
 
-.search-box {
-
+.search-plate {
+text-transform: uppercase;
 }

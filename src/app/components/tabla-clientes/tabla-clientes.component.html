@@ -3,14 +3,9 @@
     <h2>Total registros encontrados: <span class="total">{{datosClientes.length}}</span> </h2>
   </div>
   <div class="search-box">
-    <nz-input-group nzSearch nzSize="large" [nzAddOnBefore]="suffixButtonBefore" [nzAddOnAfter]="suffixButtonAfter">
-      <input #Query (keyup)="onQueryChanged(Query.value)" type="text" nz-input placeholder="Ingresa una placa" />
+    <nz-input-group nzSearch nzSize="large" [nzAddOnAfter]="suffixButtonAfter">
+      <input class="search-plate" #Query (keyup)="onQueryChanged(Query.value)" type="text" nz-input placeholder="Ingresa una placa" />
     </nz-input-group>
-
-
-    <ng-template #suffixButtonBefore>
-      <button nz-button nzType="primary"  nzSize="default" nzSearch (click)="searchAll()">Ver todos</button>
-    </ng-template>
     <ng-template #suffixButtonAfter>
       <button nz-button nzType="primary"  nzSize="default" nzSearch [nzLoading]="isLoading">{{ isLoading ? 'Buscando...' : 'Buscar' }}</button>
     </ng-template>
@@ -30,15 +25,15 @@ nzTableLayout="fixed"
   <thead>
     <tr>
       <th class="head-table">Nombre
-        <app-search-name [Data]="datosClientes" (ResultadoBuscador)="datosClientes = $event"></app-search-name>
+        <!-- <app-search-name [Data]="datosClientes" (ResultadoBuscador)="datosClientes = $event"></app-search-name> -->
       </th>
       <th class="head-table">N° documento</th>
       <th class="head-table">Placa
-        <app-search-placa [Data]="datosClientes" (ResultadoBuscador)="datosClientes = $event"></app-search-placa>
+        <!-- <app-search-placa [Data]="datosClientes" (ResultadoBuscador)="datosClientes = $event"></app-search-placa> -->
       </th>
       <th class="head-table">Modelo</th>
       <th class="head-table">Vehiculo
-        <app-search-vehiculo  [Data]="datosClientes" (ResultadoBuscador)="datosClientes = $event"></app-search-vehiculo>
+        <!-- <app-search-vehiculo  [Data]="datosClientes" (ResultadoBuscador)="datosClientes = $event"></app-search-vehiculo> -->
       </th>
       <th class="head-table">Acciones</th>
     </tr>

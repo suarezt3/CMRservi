@@ -69,8 +69,19 @@ export class TablaClientesComponent implements OnInit {
     if (this.debounceTimer) clearTimeout(this.debounceTimer);
     this.debounceTimer = setTimeout(() => {
       this.DatosClientesService.getClientPlate(query.toUpperCase()).subscribe((resp: any) => {
+
+        if (!query) {
+          this.DatosClientesService.getClientes().subscribe((resp: any) => {
+            this.datosClientes = resp
+            this.query = ""
+            this.isLoading = false
+          });
+        } else {
           this.datosClientes = resp
           this.isLoading = false
+        }
+
+
       })
     },800)
   }
