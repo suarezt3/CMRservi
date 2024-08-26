@@ -18,7 +18,7 @@
   </div>
 </section>
 <hr>
-@defer ( on timer(3000)) {
+@defer ( on timer(2000)) {
   <nz-table
   #nzTable
   [nzData]="datosClientes"
@@ -71,7 +71,13 @@
     </tbody>
   </nz-table>
 }@placeholder {
-  <p>Cargando datos...</p>
+  <nz-spin nzSize="large" nzTip="Cargando datos...">
+    <nz-alert
+      nzType="info"
+      nzMessage="Espere por favor"
+      nzDescription="estamos cargando la informacion!"
+    ></nz-alert>
+  </nz-spin>
 }
 
 
