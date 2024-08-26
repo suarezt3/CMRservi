@@ -18,57 +18,62 @@
   </div>
 </section>
 <hr>
-<nz-table
-#nzTable
-[nzData]="datosClientes"
-[nzTotal]="datosClientes.length"
-nzTableLayout="fixed"
-[nzScroll]="{ y: '720px' }"
-[nzShowPagination]="false"
-[nzFrontPagination]="false"
-[nzPageSize]="10"
->
-  <thead>
-    <tr>
-      <th class="head-table">Nombre
-        <!-- <app-search-name [Data]="datosClientes" (ResultadoBuscador)="datosClientes = $event"></app-search-name> -->
-      </th>
-      <th class="head-table">N° documento</th>
-      <th class="head-table">Placa
-        <!-- <app-search-placa [Data]="datosClientes" (ResultadoBuscador)="datosClientes = $event"></app-search-placa> -->
-      </th>
-      <th class="head-table">Modelo</th>
-      <th class="head-table">Vehiculo
-        <!-- <app-search-vehiculo  [Data]="datosClientes" (ResultadoBuscador)="datosClientes = $event"></app-search-vehiculo> -->
-      </th>
-      <th class="head-table">Acciones</th>
-    </tr>
-  </thead>
-  <tbody>
-    @for (data of datosClientes; track $index) {
+@defer ( on timer(3000)) {
+  <nz-table
+  #nzTable
+  [nzData]="datosClientes"
+  [nzTotal]="datosClientes.length"
+  nzTableLayout="fixed"
+  [nzScroll]="{ y: '720px' }"
+  [nzShowPagination]="false"
+  [nzFrontPagination]="false"
+  [nzPageSize]="10"
+  >
+    <thead>
       <tr>
-        <td>{{ data?.name ? data?.name : 'NO REGISTRA' }}</td>
-        <td>{{ data?.numberDocument ? data?.numberDocument : 'NO REGISTRA'}}</td>
-        <td>
-          <section class="container">
-            <div class="container-placa">
-              <div class="placa texto-placa">{{data?.plate | slice:0:3}}</div>
-              <div class="icono-placa"></div>
-              <div class="placa numero-placa">{{data?.plate | slice:3}}</div>
-            </div>
-            <p class="texto-colombia">COLOMBIA</p>
-          </section>
-        </td>
-        <td>{{ data?.vehicle }}</td>
-        <td>{{ data?.vehicleBrand }}</td>
-        <td>
-        <button (click)="open(data?.plate)" class="btn" nz-button nzType="primary" > Ver mas</button>
-        <button class="btn" nz-button nzType="default" (click)="mostrarModal(data?.plate)" > Agregar trabajo</button>
-        </td>
+        <th class="head-table">Nombre
+          <!-- <app-search-name [Data]="datosClientes" (ResultadoBuscador)="datosClientes = $event"></app-search-name> -->
+        </th>
+        <th class="head-table">N° documento</th>
+        <th class="head-table">Placa
+          <!-- <app-search-placa [Data]="datosClientes" (ResultadoBuscador)="datosClientes = $event"></app-search-placa> -->
+        </th>
+        <th class="head-table">Modelo</th>
+        <th class="head-table">Vehiculo
+          <!-- <app-search-vehiculo  [Data]="datosClientes" (ResultadoBuscador)="datosClientes = $event"></app-search-vehiculo> -->
+        </th>
+        <th class="head-table">Acciones</th>
       </tr>
-    }
-  </tbody>
-</nz-table>
+    </thead>
+    <tbody>
+      @for (data of datosClientes; track $index) {
+        <tr>
+          <td>{{ data?.name ? data?.name : 'NO REGISTRA' }}</td>
+          <td>{{ data?.numberDocument ? data?.numberDocument : 'NO REGISTRA'}}</td>
+          <td>
+            <section class="container">
+              <div class="container-placa">
+                <div class="placa texto-placa">{{data?.plate | slice:0:3}}</div>
+                <div class="icono-placa"></div>
+                <div class="placa numero-placa">{{data?.plate | slice:3}}</div>
+              </div>
+              <p class="texto-colombia">COLOMBIA</p>
+            </section>
+          </td>
+          <td>{{ data?.vehicle }}</td>
+          <td>{{ data?.vehicleBrand }}</td>
+          <td>
+          <button (click)="open(data?.plate)" class="btn" nz-button nzType="primary" > Ver mas</button>
+          <button class="btn" nz-button nzType="default" (click)="mostrarModal(data?.plate)" > Agregar trabajo</button>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </nz-table>
+}@placeholder {
+  <p>Cargando datos...</p>
+}
+
 
 @if (cliente) {
   <nz-drawer
