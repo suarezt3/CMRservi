@@ -2,6 +2,7 @@ import { Component, OnInit, Signal, inject, signal } from '@angular/core';
 import { DatosClientesService } from '../../services/datos-clientes.service';
 import { NgZorroModule } from '../../ng-zorro/ng-zorro.module';
 import { FormsModule } from '@angular/forms';
+import { utils, writeFileXLSX } from 'xlsx';
 
 import { SearchComponent } from '../search-name/search-name.component';
 import { SearchPlacaComponent } from '../search-placa/search-placa.component';
@@ -14,6 +15,7 @@ import { Trabajo } from '../../interfaces/trabajos';
 import { CommonModule } from '@angular/common';
 import { FormularioNuevoTrabajoComponent } from '../formulario-nuevo-trabajo/formulario-nuevo-trabajo.component';
 
+interface President { Name: string; Index: number };
 
 @Component({
   selector: 'app-tabla-clientes',
@@ -124,5 +126,22 @@ export class TablaClientesComponent implements OnInit {
   cancelarModal(): void {
     this.modalVisible = false;
   }
+
+
+  /**
+   * Funcion para exportar los datos de la tabla en un excel
+   */
+  rows: President[] = [ { Name: "SheetJS", Index: 0 }];
+  /* get state data and export to XLSX */
+  DwonloadXLSX(): void {
+    /* generate worksheet from state */
+    const ws = utils.json_to_sheet(this.rows);
+    /* create workbook and append worksheet */
+    const wb = utils.book_new();
+    utils.book_append_sheet(wb, ws, "Data");
+    /* export to XLSX */
+    writeFileXLSX(wb, "SheetJSAngularAoO.xlsx");
+
+}
 
 }
