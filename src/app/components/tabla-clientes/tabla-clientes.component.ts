@@ -158,7 +158,7 @@ export class TablaClientesComponent implements OnInit {
     Marca_Vehiculo: cliente.vehicleBrand || "", // Manejo de cadena vacía
     Placa: cliente.plate || "" // Manejo de cadena vacía
   }));
-   setTimeout(() => {
+
     /* generate worksheet from state */
     const ws = utils.json_to_sheet(rows);
     /* create workbook and append worksheet */
@@ -166,7 +166,7 @@ export class TablaClientesComponent implements OnInit {
     utils.book_append_sheet(wb, ws, "Datos");
     /* export to XLSX */
     writeFileXLSX(wb, "Clientes.xlsx");
-   },3000);
+
 }
 
 
