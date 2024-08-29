@@ -131,16 +131,27 @@ export class TablaClientesComponent implements OnInit {
   /**
    * Funcion para exportar los datos de la tabla en un excel
    */
-  rows: President[] = [ { Name: "SheetJS", Index: 0 }];
+  rows: Cliente[] = [
+     {
+      name: "Eyder Suarez",
+      documentType: "Cedula",
+      numberDocument: "1.130.680.544",
+      email: "ey_der19@hotmail.com",
+      phone: "318277564",
+      vehicle: "Viva R Style",
+      vehicleBrand: "Suzuki",
+      plate: "MMC13G"
+     }
+    ];
   /* get state data and export to XLSX */
   DwonloadXLSX(): void {
     /* generate worksheet from state */
     const ws = utils.json_to_sheet(this.rows);
     /* create workbook and append worksheet */
     const wb = utils.book_new();
-    utils.book_append_sheet(wb, ws, "Data");
+    utils.book_append_sheet(wb, ws, "Datos");
     /* export to XLSX */
-    writeFileXLSX(wb, "SheetJSAngularAoO.xlsx");
+    writeFileXLSX(wb, "Clientes.xlsx");
 
 }
 
