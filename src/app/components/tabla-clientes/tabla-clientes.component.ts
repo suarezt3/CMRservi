@@ -131,28 +131,45 @@ export class TablaClientesComponent implements OnInit {
   /**
    * Funcion para exportar los datos de la tabla en un excel
    */
+
+
   rows: Cliente[] = [
      {
-      name: "Eyder Suarez",
-      documentType: "Cedula",
-      numberDocument: "1.130.680.544",
-      email: "ey_der19@hotmail.com",
-      phone: "318277564",
-      vehicle: "Viva R Style",
-      vehicleBrand: "Suzuki",
-      plate: "MMC13G"
+      name: this.datosClientes[0]?.name,
+      documentType: "",
+      numberDocument: "",
+      email: "",
+      phone: "",
+      vehicle:  "",
+      vehicleBrand: "",
+      plate: ""
      }
     ];
   /* get state data and export to XLSX */
   DwonloadXLSX(): void {
+   console.log("DESCARGA", this.datosClientes)
+   const rows = this.datosClientes.map(cliente => ({
+    Nombre: cliente.name,
+    Tipo_Documento: cliente.documentType,
+    Numero_Documento: cliente.numberDocument || "", // Manejo de null con cadena vacía
+    Email: cliente.email || "", // Manejo de cadena vacía
+    Telefono: cliente.phone || "", // Manejo de cadena vacía
+    Modelo_Vehiculo: cliente.vehicle || "", // Manejo de cadena vacía
+    Marca_Vehiculo: cliente.vehicleBrand || "", // Manejo de cadena vacía
+    Placa: cliente.plate || "" // Manejo de cadena vacía
+  }));
+   setTimeout(() => {
     /* generate worksheet from state */
-    const ws = utils.json_to_sheet(this.rows);
+    const ws = utils.json_to_sheet(rows);
     /* create workbook and append worksheet */
     const wb = utils.book_new();
     utils.book_append_sheet(wb, ws, "Datos");
     /* export to XLSX */
     writeFileXLSX(wb, "Clientes.xlsx");
+   },3000);
+}
+
 
 }
 
-}
+
