@@ -22,9 +22,9 @@ export class EstadisticasComponent {
    gradient = false;
    showLegend = true;
    showXAxisLabel = true;
-   xAxisLabel = 'Country';
+   xAxisLabel = 'Paises';
    showYAxisLabel = true;
-   yAxisLabel = 'Population';
+   yAxisLabel = 'Poblacion';
 
    colorScheme: any = {
      domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
