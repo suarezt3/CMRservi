@@ -27,7 +27,7 @@ export class EstadisticasComponent {
    yAxisLabel = 'Poblacion';
 
    colorScheme: any = {
-     domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
+     domain: ['#bbd0ff', '#90e0ef', '#0077b6', '#AAAAAA']
    };
 
    constructor() {
