@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { single } from '../../../assets/dumy';
+import { DatosClientesService } from '../../services/datos-clientes.service';
+import { Trabajo } from '../../interfaces/trabajos';
+
 
 @Component({
   selector: 'app-estadisticas',
@@ -9,10 +12,21 @@ import { single } from '../../../assets/dumy';
   templateUrl: './estadisticas.component.html',
   styleUrl: './estadisticas.component.css'
 })
-export class EstadisticasComponent {
+export class EstadisticasComponent implements OnInit {
+
+  public trabajos: Trabajo[] = [] || undefined
 
   public single!: any[];
   public multi!: any[];
+  public dataT!: any[];
+
+
+  public dumyDATA = [
+    {
+      "name": "Suzuki",
+      "value": 10
+    }
+  ]
 
   public view: any = [700, 400];
 
@@ -30,8 +44,33 @@ export class EstadisticasComponent {
      domain: ['#bbd0ff', '#90e0ef', '#0077b6', '#AAAAAA']
    };
 
+   private DatosClientesService = inject( DatosClientesService );
+
+
    constructor() {
-    Object.assign(this, { single })
+    this.DatosClientesService.getJobs().subscribe((resp: any) => {
+      console.log("TRABAJOS", resp);
+      this.trabajos = resp
+
+      this.dataT = this.trabajos.map(jobs => ({
+        "name": jobs?.vehicleBrand || "",
+        "value": 9670
+      }))
+
+    })
+
+  }
+
+
+  ngOnInit(): void {
+
+    setTimeout(() => {
+     console.log("DATA Transformada", this.dataT);
+    Object.assign(this.dataT)
+    }, 3000);
+
+
+
   }
 
   onSelect(event: any) {
