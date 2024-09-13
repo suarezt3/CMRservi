@@ -19,6 +19,7 @@ export class EstadisticasComponent implements OnInit {
   public single!: any[];
   public multi!: any[];
   public dataT!: any[];
+  public count!: any
 
 
   public dumyDATA = [
@@ -48,29 +49,24 @@ export class EstadisticasComponent implements OnInit {
 
 
    constructor() {
-    this.DatosClientesService.getJobs().subscribe((resp: any) => {
-      console.log("TRABAJOS", resp);
-      this.trabajos = resp
 
-      this.dataT = this.trabajos.map(jobs => ({
-        "name": jobs?.vehicleBrand || "",
-        "value": 9670
-      }))
-
-    })
 
   }
 
 
   ngOnInit(): void {
-
-    setTimeout(() => {
-     console.log("DATA Transformada", this.dataT);
-    Object.assign(this.dataT)
-    }, 3000);
+    this.DatosClientesService.getJobs().subscribe((resp: any) => {
+      console.log("TRABAJOS", resp);
+      this.trabajos = resp
 
 
 
+      this.dataT = this.trabajos.map(jobs => ({
+        "name": jobs?.vehicleBrand || "",
+        "value": jobs?.vehicleBrand?.length || ""
+      }))
+      Object.assign(this, {single})
+    })
   }
 
   onSelect(event: any) {

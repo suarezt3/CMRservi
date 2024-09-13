@@ -1,7 +1,7 @@
-<!-- <ngx-charts-bar-vertical
+<ngx-charts-bar-vertical
   [view]="view"
   [scheme]="colorScheme"
-  [results]="dataT"
+  [results]="single"
   [gradient]="gradient"
   [xAxis]="showXAxis"
   [yAxis]="showYAxis"
@@ -12,7 +12,7 @@
   [xAxisLabel]="xAxisLabel"
   [yAxisLabel]="yAxisLabel"
   (select)="onSelect($event)">
-</ngx-charts-bar-vertical> -->
+</ngx-charts-bar-vertical>
 
 <ngx-charts-bar-horizontal
 [view]="view"
@@ -26,5 +26,6 @@
 [showYAxisLabel]="showYAxisLabel"
 [xAxisLabel]="xAxisLabel"
 [yAxisLabel]="yAxisLabel"
+[xScaleMax]="100"
 (select)="onSelect($event)">
 </ngx-charts-bar-horizontal>
