@@ -145,6 +145,21 @@ getBrandVehicles() {
 
 /**
  *
+ * @param filtro de los trabajos
+ * @returns
+ */
+getFilterJobs(vehicleBrand: string, typeJobs: string) {
+  let headers = new HttpHeaders({
+    'apikey'       : environment.supabaseKey,
+    'Authorization': environment.authorization,
+  })
+
+   return this.http.get(`${this.url}/jobs?vehicleBrand=eq.${vehicleBrand}&typeJobs=eq.${typeJobs}`, {headers})
+}
+
+
+/**
+ *
  * @returns Obtener los tipos de documentos
  */
 getTypeDocuments() {

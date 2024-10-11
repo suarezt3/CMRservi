@@ -27,6 +27,7 @@ export class EstadisticasComponent implements OnInit {
   public multi!: any[];
   public dataT!: any[];
   public count!: any;
+  public dataFiltered!: any[];
 
   private fb                   = inject(FormBuilder);
   private DatosClientesService = inject( DatosClientesService );
@@ -90,7 +91,6 @@ export class EstadisticasComponent implements OnInit {
         "name": jobs?.vehicleBrand || "",
         "value": jobs?.vehicleBrand?.length || ""
       }))
-      Object.assign(this, {single})
     })
   }
 
@@ -100,6 +100,25 @@ export class EstadisticasComponent implements OnInit {
 
   onSubmit() {
 
-  }
+   let vehicleBrand     = this.formFilter.get('vehicleBrand')?.value;
+   let typeJobs         = this.formFilter.get('typeJobs')?.value;
+   let  date             = this.formFilter.get('date')?.value;
+   console.log(vehicleBrand, typeJobs, date);
 
+
+    this.DatosClientesService.getFilterJobs(vehicleBrand, typeJobs).subscribe((resp: any) => {
+        console.log("FILTRO", resp);
+        this.dataFiltered = resp
+        this.count = resp.length;
+
+        const transformedArray = resp.map((item: any) => ({
+          vehicleBrand: item.vehicleBrand,
+          typeJobs: item.typeJobs,
+          count : resp.length
+      }));
+
+      console.log("ARRAY NEW",transformedArray);
+  })
+
+ }
 }
