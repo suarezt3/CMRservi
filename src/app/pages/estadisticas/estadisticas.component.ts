@@ -18,16 +18,21 @@ import { BRANDS } from '../../interfaces/marcas-vehiculos';
 export class EstadisticasComponent implements OnInit {
 
   public formFilter!: FormGroup;
-  public trabajos: Trabajo[] = [] || undefined;
-  public brands: BRANDS[] = [] || undefined;
-  public typeJobs: any[] = [] || undefined;
+  public trabajos: Trabajo[] = [];
+  public brands: BRANDS[] = [];
+  public typeJobs: any[] = [];
   public mode = 'date';
 
   public single!: any[];
   public multi!: any[];
   public dataT!: any[];
-  public count!: any;
   public dataFiltered!: any[];
+
+  public count!: any;
+  public resultFiltered!: any[];
+
+
+  filtros: any[] = [];
 
   private fb                   = inject(FormBuilder);
   private DatosClientesService = inject( DatosClientesService );
@@ -48,9 +53,9 @@ export class EstadisticasComponent implements OnInit {
    gradient = false;
    showLegend = true;
    showXAxisLabel = true;
-   xAxisLabel = 'Paises';
+   xAxisLabel = 'Tipo de Trabajo';
    showYAxisLabel = true;
-   yAxisLabel = 'Poblacion';
+   yAxisLabel = 'Cantidad de Trabajos';
 
    colorScheme: any = {
      domain: ['#bbd0ff', '#90e0ef', '#0077b6', '#AAAAAA']
@@ -109,7 +114,19 @@ export class EstadisticasComponent implements OnInit {
     this.DatosClientesService.getFilterJobs(vehicleBrand, typeJobs).subscribe((resp: any) => {
         console.log("FILTRO", resp);
         this.dataFiltered = resp
+
         this.count = resp.length;
+        this.resultFiltered = typeJobs;
+
+        const filtro = [
+          {
+            name: typeJobs,
+            value: resp.length
+          }
+        ]
+
+        this.filtros = filtro;
+
 
         const transformedArray = resp.map((item: any) => ({
           vehicleBrand: item.vehicleBrand,
