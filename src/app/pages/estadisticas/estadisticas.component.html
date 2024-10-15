@@ -1,18 +1,23 @@
 
 <section>
 <div>
+  <div>
+    <h3>Estadísticas</h3>
+  </div>
 
   <form nz-form [formGroup]="formFilter" (ngSubmit)="onSubmit()">
-    <div>
-      <label for="">Marca de Vehículo:</label>
-      <div>
-        <nz-select class="select" formControlName="vehicleBrand" nzPlaceHolder="Seleccione una opcion">
-          @for (item of brands; track item?.id) {
-            <nz-option [nzValue]="item?.name" [nzLabel]="item.name"></nz-option>
-          }
-        </nz-select>
+    <div class="form-group">
+      <div class="input">
+        <label for="">Marca de Vehículo:</label>
+        <div>
+          <nz-select class="select" formControlName="vehicleBrand" nzPlaceHolder="Seleccione una opcion">
+            @for (item of brands; track item?.id) {
+              <nz-option [nzValue]="item?.name" [nzLabel]="item.name"></nz-option>
+            }
+          </nz-select>
+        </div>
       </div>
-      <div>
+      <div class="input">
         <label for="">Tipo de Trabajo:</label>
         <div>
           <nz-select class="input" formControlName="typeJobs" nzPlaceHolder="Seleccione una opcion">
@@ -23,20 +28,9 @@
         </div>
       </div>
     </div>
-<!-- <div>
-  <label for="">Filtrar por:</label>
-  <nz-select ngModel="" nzPlaceHolder="Seleccione una opcion">
-    <nz-option nzValue="year" nzLabel="Año"></nz-option>
-    <nz-option nzValue="month" nzLabel="Mes"></nz-option>
-  </nz-select>
-</div>
-  <div>
-      <nz-date-picker nzMode="month"></nz-date-picker>
-      <nz-date-picker nzMode="year"></nz-date-picker>
-  </div> -->
-  <div>
-    <button (click)="onSubmit()">Filtrar</button>
-  </div>
+    <div>
+      <button nz-button nzType="primary" (click)="onSubmit()">Filtrar</button>
+    </div>
   </form>
 
 </div>
@@ -44,22 +38,27 @@
 </section>
 
 
+@if (resultFiltered.length > 0) {
+  <ngx-charts-bar-vertical
+    [view]="view"
+    [scheme]="colorScheme"
+    [results]="filtros"
+    [gradient]="gradient"
+    [xAxis]="showXAxis"
+    [yAxis]="showYAxis"
+    [legend]="showLegend"
+    legendTitle="Resume"
+    [showXAxisLabel]="showXAxisLabel"
+    [showYAxisLabel]="showYAxisLabel"
+    [xAxisLabel]="xAxisLabel"
+    [yAxisLabel]="yAxisLabel"
+    (select)="onSelect($event)">
+  </ngx-charts-bar-vertical>
+}@else {
+  <h3>No hay datos para mostrar</h3>
+}
 
-<ngx-charts-bar-vertical
-  [view]="view"
-  [scheme]="colorScheme"
-  [results]="filtros"
-  [gradient]="gradient"
-  [xAxis]="showXAxis"
-  [yAxis]="showYAxis"
-  [legend]="showLegend"
-  legendTitle="Resume"
-  [showXAxisLabel]="showXAxisLabel"
-  [showYAxisLabel]="showYAxisLabel"
-  [xAxisLabel]="xAxisLabel"
-  [yAxisLabel]="yAxisLabel"
-  (select)="onSelect($event)">
-</ngx-charts-bar-vertical>
+
 
 <!--
 <ngx-charts-bar-horizontal

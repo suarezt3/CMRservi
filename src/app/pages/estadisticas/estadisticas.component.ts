@@ -28,11 +28,10 @@ export class EstadisticasComponent implements OnInit {
   public dataT!: any[];
   public dataFiltered!: any[];
 
-  public count!: any;
-  public resultFiltered!: any[];
+  public resultFiltered: any[] = [];
 
 
-  filtros: any[] = [];
+ public filtros: any[] = [];
 
   private fb                   = inject(FormBuilder);
   private DatosClientesService = inject( DatosClientesService );
@@ -113,10 +112,8 @@ export class EstadisticasComponent implements OnInit {
 
     this.DatosClientesService.getFilterJobs(vehicleBrand, typeJobs).subscribe((resp: any) => {
         console.log("FILTRO", resp);
-        this.dataFiltered = resp
 
-        this.count = resp.length;
-        this.resultFiltered = typeJobs;
+        this.resultFiltered = resp;
 
         const filtro = [
           {
