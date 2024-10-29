@@ -1,9 +1,5 @@
 
 
-:host() {
-  font-family: "Nunito", sans-serif;
-}
-
 .header {
   width: 100%;
   display: flex;

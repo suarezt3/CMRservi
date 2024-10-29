@@ -1,6 +1,10 @@
-:host() {
+/* :host() {
   font-family: "Nunito", sans-serif;
-}
+} */
+
+/* .container{
+  font-family: "Nunito", sans-serif;
+} */
 
 .section-one {
   display: flex;

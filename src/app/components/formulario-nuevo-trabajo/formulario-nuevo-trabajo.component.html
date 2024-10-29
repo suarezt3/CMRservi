@@ -11,7 +11,7 @@
             }
           </nz-select>
         </div>
-        @if (invalidField('typeJobs') && hasRequiredError(formNuevoTrabajo?.controls?.['typeJobs'])) {
+        @if (invalidField('typeJobs') && hasRequiredError(formNuevoTrabajo.controls['typeJobs'])) {
           <div class="error" >
               <span > Campo obligatorio </span>
           </div>
@@ -30,7 +30,7 @@
             minlength="4"
             />
         </div>
-        @if (invalidField('numberOrder') && hasRequiredError(formNuevoTrabajo?.controls?.['numberOrder'])) {
+        @if (invalidField('numberOrder') && hasRequiredError(formNuevoTrabajo.controls['numberOrder'])) {
           <div class="error" >
             <span > Campo obligatorio </span>
           </div>
@@ -44,7 +44,7 @@
       <div>
         <input nz-input formControlName="price" placeholder="0000" type="number" />
       </div>
-      @if (invalidField('price') && hasRequiredError(formNuevoTrabajo?.controls?.['price'])) {
+      @if (invalidField('price') && hasRequiredError(formNuevoTrabajo.controls['price'])) {
         <div class="error" >
             <span > Campo obligatorio </span>
         </div>
@@ -57,13 +57,13 @@
         <div>
           <nz-date-picker formControlName="date"></nz-date-picker>
         </div>
-        @if (invalidField('date') && hasRequiredError(formNuevoTrabajo?.controls?.['date'])) {
+        @if (invalidField('date') && hasRequiredError(formNuevoTrabajo.controls['date'])) {
           <div class="error" >
             <span > Campo obligatorio </span>
           </div>
         }
       </div>
-      @if (formNuevoTrabajo.controls?.['typeJobs']?.value != 'Otros trabajos') {
+      @if (formNuevoTrabajo.controls['typeJobs'].value != 'Otros trabajos') {
         <div>
           <span nz-tooltip nzTooltipTitle="Esta es la fecha para el proximo trabajo" nz-icon nzType="info-circle" nzTheme="twotone" nzTooltipColor="blue"></span>
           <label for=""> Proxima fecha</label>
@@ -81,7 +81,7 @@
       <div>
         <textarea nz-input formControlName="description" rows="4"></textarea>
       </div>
-      @if (invalidField('description') && hasRequiredError(formNuevoTrabajo?.controls?.['description'])) {
+      @if (invalidField('description') && hasRequiredError(formNuevoTrabajo.controls['description'])) {
         <div class="error" >
           <span > Campo obligatorio </span>
         </div>
