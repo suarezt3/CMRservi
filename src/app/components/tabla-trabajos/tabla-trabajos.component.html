@@ -1,4 +1,37 @@
 <h2>Total trabajos realizados: <span class="total">{{trabajos.length}}</span></h2>
+<section>
+  <div>
+    <form nz-form >
+      <div class="form-group">
+        <div class="input">
+          <label for="">Marca de Vehículo:</label>
+          <div>
+            <nz-select class="select" formControlName="vehicleBrand" nzPlaceHolder="Seleccione una opcion">
+              @for (item of brands; track item?.id) {
+                <nz-option [nzValue]="item?.name" [nzLabel]="item.name"></nz-option>
+              }
+            </nz-select>
+          </div>
+        </div>
+        <div class="input">
+          <label for="">Tipo de Trabajo:</label>
+          <div>
+            <nz-select class="input" formControlName="typeJobs" nzPlaceHolder="Seleccione una opcion">
+              @for (item of typeJobs; track item?.id) {
+              <nz-option [nzValue]="item?.id" [nzLabel]="item?.nombre" ></nz-option>
+              }
+            </nz-select>
+          </div>
+        </div>
+      </div>
+      <div>
+        <button nz-button nzType="primary">Filtrar</button>
+      </div>
+    </form>
+
+  </div>
+
+  </section>
 <hr>
 <nz-table
 #nzTable

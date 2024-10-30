@@ -1,35 +1,38 @@
-<div class="btn-edit-client">
-  <button
-    nz-button
-    nzType="default"
-    nzSize="small"
-    [routerLink]="['/editar', cliente?.plate || undefined]" routerLinkActive="router-link-active"
-    >
-    <span nz-icon nzType="edit" nzTheme="outline"></span>  Editar</button>
-  </div>
-<div class="header">
-  <section class="container">
-    <div class="container-placa">
-      <div class=" placa texto-placa">{{cliente?.plate | slice:0:3}}</div>
-      <div class="icono-placa"></div>
-      <div class=" placa numero-placa">{{cliente?.plate | slice:3}}</div>
+<section class="section-one">
+  <div class="btn-edit-client">
+    <button
+      nz-button
+      nzType="default"
+      nzSize="small"
+      [routerLink]="['/editar', cliente?.plate || undefined]" routerLinkActive="router-link-active"
+      >
+      <span nz-icon nzType="edit" nzTheme="outline"></span>  Editar</button>
     </div>
-    <p class="texto-colombia">COLOMBIA</p>
+  <div class="header">
+    <section class="container">
+      <div class="container-placa">
+        <div class=" placa texto-placa">{{cliente?.plate | slice:0:3}}</div>
+        <div class="icono-placa"></div>
+        <div class=" placa numero-placa">{{cliente?.plate | slice:3}}</div>
+      </div>
+      <p class="texto-colombia">COLOMBIA</p>
+    </section>
+    <div class="container-info">
+      <h4>{{ cliente?.name }}</h4>
+      <h5> {{ cliente?.phone ? cliente?.phone : 'No registra telefono' }} </h5>
+      <h5> {{ cliente?.email ? cliente?.email : 'No registra correo' }} </h5>
+    </div>
+  </div>
+  <section class="container-brand">
+    <div class="brands brand">
+      <h4>{{cliente?.vehicleBrand | uppercase}}</h4>
+    </div>
+    <div class=" brands vehicle">
+      <h4>
+        {{cliente?.vehicle}}
+      </h4>
+    </div>
   </section>
-  <div class="container-info">
-    <h4>{{ cliente?.name }}</h4>
-    <h5> {{ cliente?.phone ? cliente?.phone : 'No registra telefono' }} </h5>
-    <h5> {{ cliente?.email ? cliente?.email : 'No registra correo' }} </h5>
-  </div>
-</div>
-<section class="container-brand">
-  <div class="brands brand">
-    <h4>{{cliente?.vehicleBrand | uppercase}}</h4>
-  </div>
-  <div class=" brands vehicle">
-    <h4>
-      {{cliente?.vehicle}}
-    </h4>
-  </div>
+  <hr>
 </section>
-<hr>
+

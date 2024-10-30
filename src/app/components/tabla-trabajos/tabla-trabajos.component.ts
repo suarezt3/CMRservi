@@ -16,6 +16,8 @@ import { SearchPlacaComponent } from '../search-placa/search-placa.component';
 export class TablaTrabajosComponent implements OnInit {
 
   public trabajos: Trabajo[] = [] || undefined
+  public brands: any[] = [] || undefined //TEMPORAL
+  public typeJobs: any[] = [] || undefined //TEMPORAL
 
   private DatosClientesService = inject( DatosClientesService );
 
