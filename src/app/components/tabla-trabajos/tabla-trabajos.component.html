@@ -1,12 +1,12 @@
 <h2>Total trabajos realizados: <span class="total">{{trabajos.length}}</span></h2>
 <section>
   <div>
-    <form nz-form >
+    <form nz-form [formGroup]="formFilter" (ngSubmit)="enviar()">
       <div class="form-group">
         <div class="input">
           <label for="">Marca de Vehículo:</label>
           <div>
-            <nz-select class="select" formControlName="vehicleBrand" nzPlaceHolder="Seleccione una opcion">
+            <nz-select class="input" formControlName="vehicleBrand" nzPlaceHolder="Seleccione una opcion">
               @for (item of brands; track item?.id) {
                 <nz-option [nzValue]="item?.name" [nzLabel]="item.name"></nz-option>
               }
@@ -25,7 +25,7 @@
         </div>
       </div>
       <div>
-        <button nz-button nzType="primary">Filtrar</button>
+        <button nz-button nzType="primary" (click)="enviar()">Filtrar</button>
       </div>
     </form>
 
