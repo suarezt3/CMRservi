@@ -1,4 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
+import { take, finalize } from 'rxjs/operators';
 import { NgZorroModule } from '../../ng-zorro/ng-zorro.module';
 import { DatosClientesService } from '../../services/datos-clientes.service';
 import { Trabajo } from '../../interfaces/trabajos';
@@ -74,15 +75,23 @@ export class TablaTrabajosComponent implements OnInit {
 
   }
 
-  reload () {
+  reload() {
     this.isLoading = true;
-    this.DatosClientesService.getJobs().subscribe((resp: any) => {
-      setTimeout(() => {
-        this.trabajos = resp
-        this.isLoading = false;
+    this.DatosClientesService.getJobs().pipe(
+      take(1), // Asegura que la suscripción se complete después de recibir el primer valor
+      finalize(() => {
+        this.isLoading = false; // Esto se ejecutará tanto si la llamada es exitosa como si falla
+      })
+    ).subscribe({
+      next: (resp: any) => {
+        this.trabajos = resp;
         this.formFilter.reset();
-      },200);
-    })
+      },
+      error: (error) => {
+        console.error('Error al cargar los trabajos', error);
+        // Aquí puedes manejar el error, por ejemplo, mostrando un mensaje al usuario
+      }
+    });
   }
 
   createMessage(): void {
