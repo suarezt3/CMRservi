@@ -20,6 +20,7 @@ export class TablaTrabajosComponent implements OnInit {
   public brands: any[] = [] || undefined
   public typeJobs: any[] = [] || undefined
   public formFilter!: FormGroup;
+  public isLoading      : boolean   = false;
 
 
   private DatosClientesService = inject( DatosClientesService );
@@ -74,9 +75,13 @@ export class TablaTrabajosComponent implements OnInit {
   }
 
   reload () {
+    this.isLoading = true;
     this.DatosClientesService.getJobs().subscribe((resp: any) => {
-      console.log("TRABAJOS", resp);
-      this.trabajos = resp
+      setTimeout(() => {
+        this.trabajos = resp
+        this.isLoading = false;
+        this.formFilter.reset();
+      },200);
     })
   }
 

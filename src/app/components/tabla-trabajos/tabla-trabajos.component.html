@@ -32,7 +32,7 @@
       </div>
       <div>
         <button class="btn" nz-button nzType="primary" [disabled]="formFilter.invalid" (click)="enviar()">Filtrar</button>
-        <button  class="btn" nz-button nzType="default" (click)="reload()">Recargar</button>
+        <button class="btn" nz-button nzType="default" [nzLoading]="isLoading"  (click)="reload()">Recargar</button>
       </div>
     </form>
 
