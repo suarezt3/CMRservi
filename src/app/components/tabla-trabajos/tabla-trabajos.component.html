@@ -1,7 +1,7 @@
 <h2>Total trabajos realizados: <span class="total">{{trabajos.length}}</span></h2>
 <section>
   <div>
-    <form nz-form [formGroup]="formFilter" (ngSubmit)="enviar()">
+    <form nz-form [formGroup]="formFilter">
       <div class="form-group">
         <div class="input">
           <label for="">Marca de Vehículo:</label>
@@ -11,6 +11,9 @@
                 <nz-option [nzValue]="item?.name" [nzLabel]="item.name"></nz-option>
               }
             </nz-select>
+            <div class="error" *ngIf="invalidField('vehicleBrand')" >
+              <span  *ngIf="formFilter.controls?.['vehicleBrand']?.errors?.['required']" > Campo obligatorio </span>
+            </div>
           </div>
         </div>
         <div class="input">
@@ -21,11 +24,15 @@
               <nz-option [nzValue]="item?.id" [nzLabel]="item?.nombre" ></nz-option>
               }
             </nz-select>
+            <div class="error" *ngIf="invalidField('typeJobs')" >
+              <span  *ngIf="formFilter.controls?.['typeJobs']?.errors?.['required']" > Campo obligatorio </span>
+            </div>
           </div>
         </div>
       </div>
       <div>
-        <button nz-button nzType="primary" (click)="enviar()">Filtrar</button>
+        <button class="btn" nz-button nzType="primary" [disabled]="formFilter.invalid" (click)="enviar()">Filtrar</button>
+        <button  class="btn" nz-button nzType="default" (click)="reload()">Recargar</button>
       </div>
     </form>
 

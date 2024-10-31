@@ -21,6 +21,7 @@ import { NzNotificationModule } from 'ng-zorro-antd/notification';
 import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzSpaceModule } from 'ng-zorro-antd/space';
+import { NzMessageModule } from 'ng-zorro-antd/message';
 
 
 
@@ -48,7 +49,8 @@ import { NzSpaceModule } from 'ng-zorro-antd/space';
     NzNotificationModule,
     NzPopconfirmModule,
     NzSpinModule,
-    NzSpaceModule
+    NzSpaceModule,
+    NzMessageModule
   ],
   exports: [
     NzTableModule,
@@ -70,7 +72,8 @@ import { NzSpaceModule } from 'ng-zorro-antd/space';
     NzNotificationModule,
     NzPopconfirmModule,
     NzSpinModule,
-    NzSpaceModule
+    NzSpaceModule,
+    NzMessageModule
   ]
 })
 export class NgZorroModule { }

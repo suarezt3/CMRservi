@@ -10,6 +10,5 @@ export const routes: Routes = [
   { path: 'clientes/:id', component: DetallesClienteComponent },
   { path: 'nuevo-cliente', component: NuevoClienteComponent },
   { path: 'editar/:id', component: NuevoClienteComponent },
-  { path: 'trabajos', component: TrabajosComponent},
-  { path: 'estadisticas', component: EstadisticasComponent }
+  { path: 'trabajos', component: TrabajosComponent}
 ];
