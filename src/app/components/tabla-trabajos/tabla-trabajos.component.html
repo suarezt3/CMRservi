@@ -40,39 +40,50 @@
 
   </section>
 <hr>
-<nz-table
-#nzTable
-[nzData]="trabajos"
-[nzScroll]="{y:'720px'}"
-[nzShowPagination]="false"
-[nzFrontPagination]="false"
->
-  <thead>
-    <tr>
-      <th class="head-table">Cliente</th>
-      <th class="head-table">Placa</th>
-      <th class="head-table">Trabajo realizado</th>
-      <th class="head-table">Fecha</th>
-    </tr>
-  </thead>
-  <tbody>
-    @for (item of trabajos; track $index) {
+@defer (when loadingData) {
+  <nz-table
+  #nzTable
+  [nzData]="trabajos"
+  [nzScroll]="{y:'720px'}"
+  [nzShowPagination]="false"
+  [nzFrontPagination]="false"
+  >
+    <thead>
       <tr>
-        <td>{{item?.name}}</td>
-        <!-- <td>{{item?.plate}}</td> -->
-        <td>
-          <section class="container">
-            <div class="container-placa">
-              <div class="placa texto-placa">{{item?.plate | slice:0:3}}</div>
-              <div class="icono-placa"></div>
-              <div class="placa numero-placa">{{item?.plate | slice:3}}</div>
-            </div>
-            <p class="texto-colombia">COLOMBIA</p>
-          </section>
-        </td>
-        <td>{{item?.typeJobs}}</td>
-        <td>{{item?.date}}</td>
+        <th class="head-table">Cliente</th>
+        <th class="head-table">Placa</th>
+        <th class="head-table">Trabajo realizado</th>
+        <th class="head-table">Fecha</th>
       </tr>
-    }
-  </tbody>
-</nz-table>
+    </thead>
+    <tbody>
+      @for (item of trabajos; track $index) {
+        <tr>
+          <td>{{item?.name}}</td>
+          <!-- <td>{{item?.plate}}</td> -->
+          <td>
+            <section class="container">
+              <div class="container-placa">
+                <div class="placa texto-placa">{{item?.plate | slice:0:3}}</div>
+                <div class="icono-placa"></div>
+                <div class="placa numero-placa">{{item?.plate | slice:3}}</div>
+              </div>
+              <p class="texto-colombia">COLOMBIA</p>
+            </section>
+          </td>
+          <td>{{item?.typeJobs}}</td>
+          <td>{{item?.date}}</td>
+        </tr>
+      }
+    </tbody>
+  </nz-table>
+}@placeholder {
+  <nz-spin nzSize="large" nzTip="Cargando datos...">
+    <nz-alert
+      nzType="info"
+      nzMessage="Espere por favor"
+      nzDescription="estamos cargando la informacion!"
+    ></nz-alert>
+  </nz-spin>
+}
+

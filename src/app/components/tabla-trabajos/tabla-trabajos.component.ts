@@ -21,7 +21,8 @@ export class TablaTrabajosComponent implements OnInit {
   public brands: any[] = [] || undefined
   public typeJobs: any[] = [] || undefined
   public formFilter!: FormGroup;
-  public isLoading      : boolean   = false;
+  public isLoading      : boolean = false;
+  public loadingData    : boolean = false;
 
 
   private DatosClientesService = inject( DatosClientesService );
@@ -37,13 +38,22 @@ export class TablaTrabajosComponent implements OnInit {
     })
 
 
-    this.DatosClientesService.getJobs().subscribe((resp: any) => {
-      console.log("TRABAJOS", resp);
-      this.trabajos = resp
+    // this.DatosClientesService.getJobs().subscribe((resp: any) => {
+    //   this.trabajos = resp
+    // })
+
+    this.DatosClientesService.getJobs().pipe(
+      take(1),
+      finalize(() => {
+        this.loadingData = true;
+      })
+    ).subscribe({
+      next: (resp: any) => {
+        this.trabajos = resp;
+      },
     })
 
     this.DatosClientesService.getBrandVehicles().subscribe((resp: any) => {
-      console.log("RESPUESTA", resp);
       this.brands = resp
     })
 
@@ -81,6 +91,7 @@ export class TablaTrabajosComponent implements OnInit {
       take(1), // Asegura que la suscripción se complete después de recibir el primer valor
       finalize(() => {
         this.isLoading = false; // Esto se ejecutará tanto si la llamada es exitosa como si falla
+        this.loadingData = true;
       })
     ).subscribe({
       next: (resp: any) => {
