@@ -37,11 +37,6 @@ export class TablaTrabajosComponent implements OnInit {
       vehicleBrand: ['', [Validators.required] ],
     })
 
-
-    // this.DatosClientesService.getJobs().subscribe((resp: any) => {
-    //   this.trabajos = resp
-    // })
-
     this.DatosClientesService.getJobs().pipe(
       take(1),
       finalize(() => {

@@ -1,4 +1,5 @@
 import { Component, OnInit, Signal, inject, signal } from '@angular/core';
+import { take, finalize } from 'rxjs/operators';
 import { DatosClientesService } from '../../services/datos-clientes.service';
 import { NgZorroModule } from '../../ng-zorro/ng-zorro.module';
 import { FormsModule } from '@angular/forms';
@@ -44,6 +45,7 @@ export class TablaClientesComponent implements OnInit {
   public cliente        : Cliente[] = [] || undefined;
   public trabajos       : Trabajo[] = [] || undefined;
   public isLoading      : boolean   = false;
+  public loadingData    : boolean   = false;
   public query          : string    = ""
   private debounceTimer?: NodeJS.Timeout;
 
@@ -54,9 +56,17 @@ export class TablaClientesComponent implements OnInit {
 
 
   ngOnInit() {
-    this.DatosClientesService.getClientes().subscribe((resp: any) => {
-      this.datosClientes = resp
-    });
+
+    this.DatosClientesService.getClientes().pipe(
+      take(1),
+      finalize(() => {
+        this.loadingData = true;
+      })
+    ).subscribe({
+      next: (resp: any) => {
+        this.datosClientes = resp;
+      },
+    })
   }
 
   searchAll() {
