@@ -89,7 +89,7 @@
         </div>
         <div class="block-input">
           <label for="placa">Placa</label>
-          <input id="placa" formControlName="plate" nz-input type="text" readonly>
+          <input id="placa" formControlName="plate" nz-input type="text" [readonly]="this.id">
           <div class="error" *ngIf="invalidField('plate')" >
             <span  *ngIf="formNuevoCliente.controls?.['plate']?.errors?.['required']" > Campo obligatorio </span>
             <span  *ngIf="formNuevoCliente.controls?.['plate']?.errors?.['minlength']" > Minimo 6 caracteres </span>
