@@ -44,7 +44,9 @@ export class FormularioNuevoClienteComponent implements OnInit {
     this.dataService.getBrandVehicles().subscribe((marcas: any) => {
       this.brands = marcas
     })
+
     this.activatedRoute.params.subscribe(({ id }) => this.id = id) // Tomar el ID del cliente
+
 
     this.formNuevoCliente = this.fb.group({
       name           : ['', [Validators.required, Validators.maxLength(50), Validators.minLength(5)]],

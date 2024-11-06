@@ -89,28 +89,42 @@
         </div>
         <div class="block-input">
           <label for="placa">Placa</label>
-          <input id="placa" formControlName="plate" nz-input type="text">
+          <input id="placa" formControlName="plate" nz-input type="text" readonly>
           <div class="error" *ngIf="invalidField('plate')" >
             <span  *ngIf="formNuevoCliente.controls?.['plate']?.errors?.['required']" > Campo obligatorio </span>
             <span  *ngIf="formNuevoCliente.controls?.['plate']?.errors?.['minlength']" > Minimo 6 caracteres </span>
             <span  *ngIf="formNuevoCliente.controls?.['plate']?.errors?.['maxlength']" > Maximo 6 caracteres </span>
-            <span  *ngIf="formNuevoCliente.controls?.['plate']?.errors?.['plateExist']" > Esta placa ya existe en la base de datos </span>
+            @if (!this.id) {
+              <span  *ngIf="formNuevoCliente.controls?.['plate']?.errors?.['plateExist']" > Esta placa ya existe en la base de datos </span>
+            }
           </div>
         </div>
       </div>
 
     </section>
     <div class="container-btn">
-      <button
-        class="btn"
-        (click)="envioFormulario()"
-        nz-button
-        nzType="primary"
-        nzBlock
-        [disabled]="formNuevoCliente.invalid"
-        >
-        {{this.id ? "Editar": "Enviar"}}
-      </button>
+      @defer (when this.id) {
+        <button
+          class="btn"
+          (click)="envioFormulario()"
+          nz-button
+          nzType="primary"
+          nzBlock
+          >
+          {{this.id ? "Editar": "Enviar"}}
+        </button>
+      }@placeholder {
+        <button
+          class="btn"
+          (click)="envioFormulario()"
+          nz-button
+          nzType="primary"
+          nzBlock
+          [disabled]="formNuevoCliente.invalid"
+          >
+          {{this.id ? "Editar": "Enviar"}}
+        </button>
+      }
       @if (this.id) {
         <nz-alert nzType="warning" nzMessage="Recuerda editar solo los datos necesarios" nzShowIcon></nz-alert>
       }
